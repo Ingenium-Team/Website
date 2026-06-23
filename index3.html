@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ── SEO META TAGS ── -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Ingenium is an elite student engineering team at Mansoura University building real-world solutions, competing globally, and pushing the limits of what students can achieve."/>
+<meta name="keywords" content="Ingenium, engineering team, student engineers, robotics, Mansoura University, IoT, autonomous systems, embedded systems"/>
+<meta name="author" content="Ingenium Engineering Team"/>
+<meta name="theme-color" content="#0D1B2A"/>
+<!-- Open Graph -->
+<meta property="og:site_name" content="Ingenium Engineering Team" />
+<meta property="og:title" content="Ingenium Engineering Team | Student Engineers at Mansoura University"/>
+<meta property="og:description" content="Ingenium is a student engineering team at Mansoura University building real-world solutions, competing globally, and empowering student leaders."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://ingenium-eng.com/"/>
+<meta property="og:image" content="https://ingenium-eng.com/logo.png"/>
+<meta property="og:locale" content="en_US" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://ingenium-eng.com/" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Ingenium","url":"https://ingenium-eng.com/","logo":"https://ingenium-eng.com/logo.png","sameAs":[]}
+</script>
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Ingenium Engineering Team | Student Engineers at Mansoura University"/>
+<meta name="twitter:description" content="Ingenium is a student engineering team at Mansoura University building real-world solutions, competing globally, and empowering student leaders."/>
+<meta name="twitter:image" content="https://ingenium-eng.com/logo.png"/>
+<title>Ingenium Engineering Team | Student Engineers at Mansoura University</title>
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<!-- Favicon placeholder (place logo.png in same folder) -->
+<link rel="icon" type="image/png" href="logo.png"/>
+<style>
+/* ── RESET & BASE ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+:root{
+  --navy:#0D1B2A;
+  --navy-mid:#1A2E42;
+  --navy-light:#2A3F55;
+  --copper:#C4753A;
+  --copper-dim:#8B5A2B;
+  --copper-glow:rgba(196,117,58,.18);
+  --silver:#E8EDF2;
+  --silver-dim:#A8B4C0;
+  --white:#FFFFFF;
+  --border:rgba(196,117,58,.25);
+  --font-display:'Cinzel',serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --error:#ef4444;
+  --success:#22c55e;
+  --space-1:8px;
+  --space-2:16px;
+  --space-3:24px;
+  --space-4:32px;
+}
+body{background:var(--navy);color:var(--silver);font-family:var(--font-body);overflow-x:hidden;line-height:1.6}
+::selection{background:var(--copper);color:var(--white)}
+img{max-width:100%;display:block}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--navy)}
+::-webkit-scrollbar-thumb{background:var(--copper);border-radius:3px}
+
+/* ── SKIP LINK (accessibility) ── */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:fixed;top:1rem;left:1rem;width:auto;height:auto;padding:.6rem 1.2rem;background:var(--copper);color:var(--white);border-radius:4px;z-index:9999;font-size:.9rem;font-weight:600}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:all .35s ease;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(13,27,42,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom-color:var(--border)}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.nav-logo img{height:40px;width:40px;object-fit:contain;border-radius:50%}
+.nav-logo span{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--silver);letter-spacing:.12em}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--silver-dim);font-size:.85rem;font-weight:500;letter-spacing:.06em;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--copper);transition:width .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--copper)}
+.nav-links a.active::after,.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--copper) !important;color:var(--white) !important;padding:.45rem 1.2rem !important;border-radius:4px;font-weight:600 !important;transition:background .2s,transform .15s !important}
+.nav-cta:hover{background:#d4843f !important;transform:translateY(-1px)}
+.nav-cta::after{display:none !important}
+.nav-cta.active{background:var(--copper) !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;line-height:0}
+.hamburger span{width:24px;height:2px;background:var(--silver);transition:all .3s;display:block}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(13,27,42,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--font-display);font-size:1.4rem;color:var(--silver);text-decoration:none;letter-spacing:.1em;transition:color .2s}
+.mobile-menu a:hover{color:var(--copper)}
+.mobile-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:var(--silver-dim);cursor:pointer;line-height:1;background:none;border:none}
+
+/* ── HERO ── */
+.hero-staging{position:relative}
+#home{position:relative;min-height:92vh;display:grid;grid-template-columns:1fr;align-items:center;gap:0;overflow:visible;padding:6rem 2rem 4rem}
+.hero-inner{display:block;width:100%;max-width:1200px;margin:0 auto;position:relative}
+.hero-content{position:relative;z-index:3;text-align:left;max-width:760px;margin:0 auto}
+.hero-visual{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;display:block;width:110%;max-width:950px}
+.hero-logo-graphic{width:100%;max-width:900px;opacity:.32;will-change:transform,opacity;display:block;transform-origin:center center}
+.hero-logo-root{transform-box:fill-box;transform-origin:center}
+.parallax-wrapper{transform-box:fill-box;transform-origin:center;transition:transform .25s ease-out}
+@keyframes floaty{0%{transform:translateY(-6px)}50%{transform:translateY(6px)}100%{transform:translateY(-6px)}}
+
+@keyframes node-glow{0%{opacity:0.78;filter:drop-shadow(0 0 0 rgba(196,117,58,0))}50%{opacity:0.96;filter:drop-shadow(0 0 6px rgba(196,117,58,0.06))}100%{opacity:0.78;filter:drop-shadow(0 0 0 rgba(196,117,58,0))}}
+
+.hero-layer.ring .static-nodes .logo-node{animation:node-glow 9s ease-in-out infinite}
+.hero-layer.ring .static-nodes .logo-node:nth-child(1){animation-delay:0s}
+.hero-layer.ring .static-nodes .logo-node:nth-child(2){animation-delay:1.8s}
+.hero-layer.ring .static-nodes .logo-node:nth-child(3){animation-delay:3.6s}
+.hero-layer.ring .static-nodes .logo-node:nth-child(4){animation-delay:5.4s}
+.hero-layer.ring .static-nodes .logo-node:nth-child(5){animation-delay:2.2s}
+.hero-layer.ring .static-nodes .logo-node:nth-child(6){animation-delay:4.8s}
+
+.pulse{mix-blend-mode:screen}
+.outer-ring{transform:translate(0px,0px)}
+.inner-ring{transform:translate(0px,0px)}
+.core-parallax{transform:translate(0px,0px)}
+.signal-ring{transform:translate(0px,0px)}
+.hero-layer.ring .track-ring.back{fill:none;stroke:rgba(255,255,255,.06);stroke-width:10}
+.hero-layer.ring .track-path{fill:none;stroke:rgba(232,237,242,.18);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.hero-layer.ring .track-segment{fill:none;stroke:rgba(232,237,242,.22);stroke-width:3;stroke-linecap:round}
+.hero-layer.signals .signal-path{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2.5;stroke-linecap:round}
+.hero-layer.signals .signal-segment{display:none}
+.hero-layer.ring .static-nodes .logo-node{fill:var(--copper);stroke:none;opacity:.82}
+.hero-layer.ring .static-nodes .logo-node.secondary{fill:rgba(196,117,58,.6);opacity:.82}
+.hero-layer.ring.outer{animation:rotate-cw 320s linear infinite}
+.hero-layer.ring.mid{animation:rotate-ccw 400s linear infinite}
+.hero-layer.ring.inner{animation:rotate-cw 480s linear infinite}
+.hero-layer.ring.core{animation:rotate-ccw 560s linear infinite}
+.core-glow{animation:soft-pulse 14s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.circuit-lines line{animation:signal-flow 3.5s ease-in-out infinite;stroke-dasharray:100;stroke-dashoffset:100}
+.node-cluster circle{animation:node-pulse 4s ease-in-out infinite}
+.node-cluster circle:nth-child(odd){animation-delay:0s}
+.node-cluster circle:nth-child(even){animation-delay:2s}
+.moving-particles circle{mix-blend-mode:screen}
+.energy-pulses circle{mix-blend-mode:screen}
+.signal-dot{display:none}
+@keyframes rotate-cw{to{transform:rotate(360deg)}}
+@keyframes rotate-ccw{to{transform:rotate(-360deg)}}
+@keyframes glow-pulse{0%,100%{opacity:.85}50%{opacity:.95}}
+@keyframes soft-pulse{0%,100%{opacity:.14}50%{opacity:.22}}
+@keyframes signal-flow{0%{stroke-dashoffset:100}50%{stroke-dashoffset:0}100%{stroke-dashoffset:-100}}
+@keyframes node-pulse{0%,100%{opacity:0.6;r:6}50%{opacity:0.95;r:8}}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo-graphic,
+  .hero-layer.ring,
+  .core-glow,
+  .circuit-lines,
+  .node-cluster,
+  .moving-particles,
+  .energy-pulses { animation: none !important; transition: none !important; }
+}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.8rem;color:var(--copper);letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fade-up .6s .2s forwards;display:block}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:.04em;color:var(--white);margin-bottom:1.5rem;opacity:0;animation:fade-up .6s .4s forwards}
+.hero-title span{color:var(--copper)}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--silver-dim);max-width:560px;margin:0 0 2.5rem;font-weight:300;line-height:1.8;opacity:0;animation:fade-up .6s .6s forwards}
+.hero-actions{display:flex;gap:1rem;justify-content:flex-start;flex-wrap:wrap;opacity:0;animation:fade-up .6s .8s forwards}
+.btn-primary{background:var(--copper);color:var(--white);padding:.8rem 2rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:.9rem;letter-spacing:.06em;transition:all .25s;border:1px solid var(--copper);display:inline-block}
+.btn-primary:hover{background:#d4843f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,117,58,.35)}
+.btn-outline{background:transparent;color:var(--silver);padding:.8rem 2rem;border-radius:4px;text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.06em;transition:all .25s;border:1px solid var(--border);display:inline-block}
+.btn-outline:hover{border-color:var(--copper);color:var(--copper);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:3rem;justify-content:flex-start;margin-top:4rem;flex-wrap:wrap;opacity:0;animation:fade-up .6s 1s forwards}
+.stat{text-align:center}
+.stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--copper);display:block}
+.stat-label{font-size:.75rem;color:var(--silver-dim);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem;display:block}
+.hero-line{width:1px;background:var(--border);height:50px;align-self:center}
+.hero-stats{display:flex;gap:1.2rem;justify-content:center;margin-top:3rem;flex-wrap:wrap;opacity:0;animation:fade-up .6s 1s forwards}
+.stat{padding:1rem 1.25rem;border:1px solid rgba(196,117,58,.12);border-radius:14px;background:rgba(255,255,255,.03);min-width:140px}
+.stat-label{font-size:.75rem;color:var(--silver-dim);letter-spacing:.1em;text-transform:uppercase;margin-top:.25rem;display:block}
+.stat-num{font-family:var(--font-display);font-size:1.9rem;font-weight:700;color:var(--copper);display:block}
+.projects-note{margin-top:1rem;font-size:.95rem;color:var(--silver-dim);max-width:520px}
+@keyframes fade-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION SHARED ── */
+section{padding:6rem 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-family:var(--font-mono);font-size:.75rem;color:var(--copper);letter-spacing:.3em;text-transform:uppercase;margin-bottom:.75rem;display:block}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:1rem;letter-spacing:.02em}
+.section-desc{color:var(--silver-dim);max-width:560px;font-size:1rem;line-height:1.8}
+.section-header{margin-bottom:3.5rem}
+.copper-line{width:48px;height:2px;background:var(--copper);margin:1.2rem 0 0;display:block}
+
+/* ── ABOUT ── */
+#about{background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+
+/* ── JOURNEY / TIMELINE ── */
+#journey{background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:3rem 0;}
+.journey-wrap{max-width:1080px;margin:0 auto;text-align:center;position:relative;}
+.journey-head{max-width:760px;margin:0 auto 2rem;}
+.journey-track{display:flex;align-items:flex-start;justify-content:center;gap:1rem;position:relative;padding:2rem 0 1rem;list-style:none;margin:0;}
+.journey-track::before{content:'';position:absolute;top:calc(50% + 1px);left:6%;right:6%;height:2px;background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(196,117,58,.24),rgba(255,255,255,.06));filter:blur(1px);}
+.journey-track::after{content:'';position:absolute;top:calc(50% + 1px);left:6%;width:0;height:2px;background:var(--copper);box-shadow:0 0 18px rgba(196,117,58,.35);animation:journey-line 4s ease-in-out forwards;}
+@keyframes journey-line{0%{width:0;}100%{width:calc(100% - 12%);}}
+.journey-step{position:relative;flex:1 1 170px;min-width:170px;max-width:240px;display:flex;flex-direction:column;align-items:center;gap:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:1.4rem;backdrop-filter:blur(14px);transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;z-index:2;}
+.journey-step:hover{transform:translateY(-10px);border-color:var(--copper);box-shadow:0 24px 44px rgba(0,0,0,.3);}
+.journey-step.featured{background:rgba(255,255,255,.14);border-color:rgba(196,117,58,.45);box-shadow:0 30px 72px rgba(0,0,0,.36);transform:none;}
+.journey-step.featured .journey-icon{width:78px;height:78px;}
+.journey-step.featured .journey-title{font-size:1.1rem;}
+.journey-icon{width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(196,117,58,.22),rgba(255,255,255,.08));border:1px solid rgba(196,117,58,.24);box-shadow:0 0 18px rgba(196,117,58,.08);transition:transform .3s ease,box-shadow .3s ease;}
+.journey-icon:hover{transform:scale(1.05);}
+.journey-icon svg{width:28px;height:28px;fill:#fff;}
+.journey-number{font-family:var(--font-mono);font-size:.8rem;color:var(--copper);letter-spacing:.22em;text-transform:uppercase;}
+.journey-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);line-height:1.2;}
+.journey-desc{font-size:.9rem;color:var(--silver-dim);line-height:1.4;max-width:220px;}
+@media(max-width:980px){.journey-track{flex-wrap:wrap;justify-content:center;}.journey-step{max-width:260px;flex:1 1 220px;}.journey-track::before,.journey-track::after{display:none;}}
+@media(max-width:640px){.journey-track{gap:1rem;}.journey-step{flex-direction:row;align-items:flex-start;padding:1rem;min-width:0;}.journey-step.featured{width:100%;}.journey-icon{width:48px;height:48px;}.journey-step.featured .journey-icon{width:56px;height:56px;}.journey-desc{max-width:none;}.journey-content{text-align:left;}.journey-title{font-size:.98rem;}}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-visual{position:relative}
+.about-card{background:var(--navy);border:1px solid var(--border);border-radius:8px;padding:2rem;position:relative;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--copper),transparent)}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.val-item{padding:1rem;border:1px solid rgba(196,117,58,.15);border-radius:6px;background:var(--navy-mid)}
+.val-icon{font-size:1.4rem;margin-bottom:.5rem;line-height:1}
+.val-title{font-size:.85rem;font-weight:600;color:var(--silver);margin-bottom:.3rem}
+.val-desc{font-size:.75rem;color:var(--silver-dim);line-height:1.6}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
+.project-card{background:var(--navy-mid);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.4),0 0 0 1px var(--copper)}
+.project-thumb{height:200px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.project-thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.thumb-1{background:linear-gradient(135deg,#1a2e42 0%,#2a3f55 100%)}
+.thumb-2{background:linear-gradient(135deg,#1a2142 0%,#2a3055 100%)}
+.thumb-3{background:linear-gradient(135deg,#1a2e30 0%,#1a3020 100%)}
+.thumb-4{background:linear-gradient(135deg,#2a1e2e 0%,#3a1e42 100%)}
+.thumb-5{background:linear-gradient(135deg,#2e1a1a 0%,#421a1a 100%)}
+.thumb-6{background:linear-gradient(135deg,#2e2a1a 0%,#42381a 100%)}
+.project-body{padding:1.5rem}
+.project-status{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .7rem;border-radius:20px;display:inline-block;margin-bottom:.75rem}
+.status-live{background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.25)}
+.status-dev{background:rgba(196,117,58,.12);color:var(--copper);border:1px solid rgba(196,117,58,.25)}
+.status-research{background:rgba(139,58,43,.12);color:#a07040;border:1px solid rgba(139,58,43,.25)}
+.project-name{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+.project-desc{font-size:.85rem;color:var(--silver-dim);line-height:1.7;margin-bottom:1rem}
+.tech-stack{display:flex;flex-wrap:wrap;gap:.4rem}
+.tech-tag{font-family:var(--font-mono);font-size:.65rem;padding:.2rem .6rem;background:rgba(196,117,58,.08);border:1px solid rgba(196,117,58,.2);border-radius:3px;color:var(--copper)}
+.project-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;font-size:.8rem;color:var(--copper);text-decoration:none;font-weight:500;transition:gap .2s}
+.project-link:hover{gap:.7rem}
+
+/* ── TEAM ── */
+#team{background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.team-layout{display:grid;gap:1.5rem}
+.advisor-card{background:linear-gradient(180deg,#131b26,#172d42);border:1px solid rgba(196,117,58,.45);border-radius:24px;padding:2rem 1.75rem;display:flex;align-items:center;gap:1.5rem;min-height:320px;position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.advisor-card:hover{transform:translateY(-8px);border-color:rgba(196,117,58,1);box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.advisor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(196,117,58,.35),transparent)}
+.advisor-card::after{content:'';position:absolute;bottom:1.25rem;right:1.25rem;width:80px;height:80px;border-radius:50%;background:rgba(196,117,58,.1);filter:blur(20px);pointer-events:none}
+.advisor-avatar{width:120px;height:120px;min-width:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2.4rem;font-weight:900;color:var(--white);background:linear-gradient(135deg,#c4753a,#8b5a2b);border:2px solid rgba(255,255,255,.15);box-shadow:0 0 32px rgba(196,117,58,.18)}
+.advisor-copy{display:flex;flex-direction:column;justify-content:center;gap:.6rem;min-width:0}
+.advisor-title{font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--white);letter-spacing:.02em;margin:0}
+.advisor-name{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--silver);margin:0}
+.advisor-badge{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--copper);background:rgba(196,117,58,.08);border:1px solid rgba(196,117,58,.22);padding:.6rem .95rem;border-radius:999px;width:max-content}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem}
+.member-card{background:var(--navy);border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem;text-align:center;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;display:flex;flex-direction:column;align-items:center;min-height:260px}
+.member-card:hover{transform:translateY(-8px);border-color:rgba(196,117,58,.8);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.member-avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--white);background:linear-gradient(180deg,#1a2e42,#243851);border:1px solid rgba(196,117,58,.2);box-shadow:0 0 24px rgba(196,117,58,.08);margin-bottom:1rem}
+.member-name{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.35rem}
+.member-role{font-size:.88rem;color:var(--silver);margin-bottom:.65rem}
+.member-track{font-size:.75rem;text-transform:uppercase;color:var(--copper);letter-spacing:.18em;padding:.35rem .75rem;border:1px solid rgba(196,117,58,.22);border-radius:999px}
+.featured-card{grid-column:span 2;min-height:300px}
+@media(max-width:1100px){.featured-card{grid-column:span 2}}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.featured-card{grid-column:span 2}}
+@media(max-width:640px){.team-layout{gap:1rem}.advisor-card{flex-direction:column;align-items:flex-start;min-height:auto;padding:2rem}.advisor-avatar{width:96px;height:96px;font-size:2rem}.advisor-card::after{width:72px;height:72px;bottom:1rem;right:1rem}.team-grid{grid-template-columns:1fr}.featured-card{grid-column:span 1}}
+.member-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white);border:2px solid var(--copper)}
+.av-1{background:linear-gradient(135deg,#c4753a,#8b5a2b)}
+.av-2{background:linear-gradient(135deg,#2a5f8a,#1a3a5c)}
+.av-3{background:linear-gradient(135deg,#5a2a8b,#3a1a5c)}
+.av-4{background:linear-gradient(135deg,#2a8b5a,#1a5c3a)}
+.av-5{background:linear-gradient(135deg,#8b2a2a,#5c1a1a)}
+.av-6{background:linear-gradient(135deg,#8b8b2a,#5c5c1a)}
+.av-7{background:linear-gradient(135deg,#2a5a8b,#1a3a5c)}
+.av-8{background:linear-gradient(135deg,#6b2a8b,#4a1a6c)}
+.member-name{font-family:var(--font-display);font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
+.member-role{font-size:.75rem;color:var(--copper);letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:.25rem}
+.member-dept{font-size:.75rem;color:var(--silver-dim);margin-bottom:1rem}
+.member-links{display:flex;gap:.6rem;justify-content:center}
+.member-links a{width:30px;height:30px;border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--silver-dim);text-decoration:none;font-size:.8rem;transition:all .2s}
+.member-links a:hover{border-color:var(--copper);color:var(--copper)}
+
+/* ── ACHIEVEMENTS ── */
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.ach-card{border:1px solid var(--border);border-radius:8px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s}
+.ach-card:hover{border-color:var(--copper)}
+.ach-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--copper),transparent);opacity:0;transition:opacity .3s}
+.ach-card:hover::after{opacity:1}
+.ach-icon{font-size:2rem;margin-bottom:1rem;line-height:1}
+.ach-title{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+.ach-desc{font-size:.85rem;color:var(--silver-dim);line-height:1.7}
+.ach-meta{font-family:var(--font-mono);font-size:.7rem;color:var(--copper);margin-top:.75rem}
+
+/* ── EVENTS ── */
+#events{background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.events-list{display:flex;flex-direction:column;gap:1rem}
+.event-item{display:grid;grid-template-columns:80px 1fr auto;gap:2rem;align-items:center;background:var(--navy);border:1px solid var(--border);border-radius:8px;padding:1.5rem 2rem;transition:border-color .3s,transform .3s}
+.event-item:hover{border-color:var(--copper);transform:translateX(4px)}
+.event-date{text-align:center}
+.event-day{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--copper);line-height:1;display:block}
+.event-month{font-family:var(--font-mono);font-size:.7rem;color:var(--silver-dim);text-transform:uppercase;letter-spacing:.12em;display:block}
+.event-title{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
+.event-meta{font-size:.8rem;color:var(--silver-dim)}
+.event-tag{font-family:var(--font-mono);font-size:.65rem;padding:.25rem .7rem;border-radius:20px;border:1px solid var(--border);color:var(--silver-dim);white-space:nowrap}
+
+/* ── JOIN US ── */
+#join{background:linear-gradient(180deg,var(--navy) 0%,rgba(26,46,66,.5) 100%)}
+.join-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start}
+.join-perks{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
+.perk{display:flex;gap:1rem;align-items:flex-start}
+.perk-icon{width:36px;height:36px;border-radius:6px;background:var(--copper-glow);border:1px solid rgba(196,117,58,.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.perk-text strong{display:block;color:var(--silver);font-size:.9rem;margin-bottom:.2rem}
+.perk-text span{font-size:.8rem;color:var(--silver-dim)}
+
+/* progress strip */
+.join-progress{display:flex;align-items:center;gap:.5rem;margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid var(--border)}
+.join-progress-item{display:flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.7rem;color:var(--silver-dim);letter-spacing:.05em}
+.join-progress-dot{width:6px;height:6px;border-radius:50%;background:var(--copper);flex-shrink:0}
+.join-progress-line{flex:1;height:1px;background:var(--border)}
+
+.form-card{background:var(--navy-mid);border:1px solid var(--border);border-radius:10px;padding:2.75rem;position:relative;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--copper),transparent)}
+.form-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.75rem;flex-wrap:wrap}
+.form-card-head h3{font-family:var(--font-display);font-size:1.15rem;color:var(--white);letter-spacing:.02em;margin-bottom:.3rem}
+.form-card-head p{font-size:.8rem;color:var(--silver-dim)}
+.form-count-badge{font-family:var(--font-mono);font-size:.68rem;color:var(--copper);background:var(--copper-glow);border:1px solid rgba(196,117,58,.3);padding:.3rem .7rem;border-radius:20px;white-space:nowrap;flex-shrink:0}
+
+.form-fieldset{margin-bottom:1.85rem}
+.form-fieldset:last-of-type{margin-bottom:0}
+.form-fieldset-label{display:flex;align-items:center;gap:.6rem;font-family:var(--font-mono);font-size:.72rem;color:var(--copper);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.1rem}
+.form-fieldset-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.form-group:last-child{margin-bottom:0}
+.form-group label{font-size:.8rem;font-weight:500;color:var(--silver-dim);letter-spacing:.05em}
+.form-group label .req{color:var(--copper);margin-left:2px}
+.form-group label .opt{font-size:.7rem;color:var(--silver-dim);opacity:.65;font-weight:400;letter-spacing:0;margin-left:.3rem}
+.form-group input,.form-group select,.form-group textarea{background:var(--navy);border:1px solid rgba(196,117,58,.2);border-radius:6px;padding:.8rem 1rem;color:var(--silver);font-size:.9rem;font-family:var(--font-body);outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--copper);box-shadow:0 0 0 3px var(--copper-glow)}
+.form-group input.invalid,.form-group select.invalid,.form-group textarea.invalid{border-color:var(--error)!important}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(168,180,192,.5)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-group select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C4753A' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--navy);cursor:pointer}
+.form-group select option{background:var(--navy-mid)}
+.char-count{font-size:.7rem;color:var(--silver-dim);text-align:right;opacity:.7}
+.field-error{font-size:.72rem;color:var(--error);margin-top:.2rem;display:none}
+.field-error.show{display:block}
+
+/* ── TRACK SELECTOR (card-based) ── */
+.track-group-label{font-size:.78rem;font-weight:600;color:var(--silver);letter-spacing:.06em;margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem}
+.track-group-label .tag{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.18rem .55rem;border-radius:20px;border:1px solid var(--border);color:var(--silver-dim)}
+.track-group-label .tag.technical{color:var(--copper);border-color:rgba(196,117,58,.4)}
+.track-group-label .tag.nontechnical{color:#7fb4d9;border-color:rgba(127,180,217,.35)}
+.track-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem;margin-bottom:1.4rem}
+.track-grid:last-of-type{margin-bottom:0}
+.track-card{position:relative}
+.track-card input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.track-card-ui{display:flex;align-items:flex-start;gap:.7rem;border:1px solid rgba(196,117,58,.2);background:var(--navy);border-radius:8px;padding:.85rem .9rem;cursor:pointer;transition:all .2s;height:100%}
+.track-card-ui .ico{width:30px;height:30px;border-radius:6px;background:var(--copper-glow);border:1px solid rgba(196,117,58,.25);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.track-card-ui .txt strong{display:block;font-size:.82rem;color:var(--silver);font-weight:600;line-height:1.3}
+.track-card-ui .check{width:16px;height:16px;border-radius:50%;border:1px solid rgba(196,117,58,.35);flex-shrink:0;margin-left:auto;margin-top:.1rem;transition:all .2s;position:relative}
+.track-card-ui .check::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--copper);opacity:0;transition:opacity .15s}
+.track-card input:checked + .track-card-ui{border-color:var(--copper);background:var(--copper-glow);box-shadow:0 0 0 1px var(--copper)}
+.track-card input:checked + .track-card-ui .check{border-color:var(--copper)}
+.track-card input:checked + .track-card-ui .check::after{opacity:1}
+.track-card input:focus-visible + .track-card-ui{outline:2px solid var(--copper);outline-offset:2px}
+.track-card-ui:hover{border-color:rgba(196,117,58,.45);transform:translateY(-1px)}
+
+.submit-btn{width:100%;background:var(--copper);color:var(--white);border:none;padding:1rem;border-radius:6px;font-family:var(--font-display);font-weight:600;font-size:.95rem;letter-spacing:.1em;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:.5rem}
+.submit-btn:hover:not(:disabled){background:#d4843f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,117,58,.35)}
+.submit-btn:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.submit-note{text-align:center;font-size:.72rem;color:var(--silver-dim);margin-top:.85rem;opacity:.8}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-alert{border-radius:6px;padding:.9rem 1.1rem;font-size:.85rem;margin-bottom:1.2rem;display:none;align-items:flex-start;gap:.6rem}
+.form-alert.error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.35);color:#fca5a5}
+.form-alert.success-alert{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac}
+.form-alert.show{display:flex}
+.form-success{display:none;text-align:center;padding:3rem 2.5rem}
+.form-success .check-circle{width:64px;height:64px;border-radius:50%;background:var(--copper-glow);border:1px solid rgba(34,197,94,.4);display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem;font-size:1.8rem}
+.form-success h3{font-family:var(--font-display);color:var(--white);margin-bottom:.6rem;font-size:1.3rem}
+.form-success p{color:var(--silver-dim);font-size:.9rem;line-height:1.7;max-width:380px;margin:0 auto}
+.form-success .success-ref{font-family:var(--font-mono);font-size:.72rem;color:var(--copper);margin-top:1.2rem;letter-spacing:.05em}
+
+@media(max-width:520px){
+  .track-grid{grid-template-columns:1fr}
+  .form-card-head{flex-direction:column}
+}
+
+/* ── CONTACT ── */
+#contact{border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start}
+.contact-icon{width:42px;height:42px;border-radius:8px;background:var(--copper-glow);border:1px solid rgba(196,117,58,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-item-text strong{display:block;color:var(--silver);font-size:.9rem;margin-bottom:.2rem}
+.contact-item-text span{font-size:.85rem;color:var(--silver-dim)}
+.social-row{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}
+.social-btn{width:42px;height:42px;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--silver-dim);text-decoration:none;font-size:1rem;transition:all .2s}
+.social-btn:hover{border-color:var(--copper);color:var(--copper);background:var(--copper-glow)}
+.contact-form-card{background:var(--navy-mid);border:1px solid var(--border);border-radius:8px;padding:2.5rem;position:relative;overflow:hidden}
+.contact-form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--copper),transparent)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-mid);border-top:1px solid var(--border);padding:3rem 2rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand img{height:44px;object-fit:contain;border-radius:50%}
+.footer-brand p{font-size:.85rem;color:var(--silver-dim);line-height:1.8;max-width:280px;margin-top:1rem}
+.footer-col h4{font-family:var(--font-display);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-col ul a{font-size:.85rem;color:var(--silver-dim);text-decoration:none;transition:color .2s}
+.footer-col ul a:hover{color:var(--copper)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.footer-copy{font-size:.8rem;color:var(--silver-dim)}
+.footer-copper{color:var(--copper)}
+.footer-social{display:flex;gap:.6rem}
+.footer-social a{width:32px;height:32px;border:1px solid rgba(255,255,255,.08);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--silver-dim);text-decoration:none;font-size:.75rem;transition:all .2s}
+.footer-social a:hover{border-color:var(--copper);color:var(--copper)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .hero-bg svg{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ── RESPONSIVE: TABLET ── */
+@media(max-width:900px){
+  .about-grid,.join-grid,.contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .event-item{grid-template-columns:60px 1fr;gap:1rem}
+  .event-tag{display:none}
+  .projects-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+}
+/* ── RESPONSIVE: MOBILE ── */
+@media(max-width:640px){
+  nav{padding:.9rem 1.25rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:4rem 1.25rem}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .hero-stats{gap:1.5rem}
+  .hero-line{display:none}
+  .event-item{grid-template-columns:1fr;gap:.5rem}
+  .event-date{display:flex;gap:.5rem;align-items:center}
+  .about-values{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .ach-grid{grid-template-columns:1fr}
+  .form-card,.contact-form-card{padding:1.5rem}
+  .join-grid{gap:2.5rem}
+}
+@media(max-width:400px){
+  .hero-title{font-size:2.4rem}
+  .hero-stats{flex-direction:column;gap:1rem;align-items:center}
+}
+/* Focus visible for keyboard nav */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- NAV -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#home" class="nav-logo" aria-label="Ingenium home">
+    <img src="logo.png" alt="Ingenium logo" width="40" height="40" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+    <span>INGENIUM</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#join" class="nav-cta">Join Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">✕</button>
+  <a href="#about" data-close-mobile>About</a>
+  <a href="#projects" data-close-mobile>Projects</a>
+  <a href="#team" data-close-mobile>Team</a>
+  <a href="#events" data-close-mobile>Events</a>
+  <a href="#contact" data-close-mobile>Contact</a>
+  <a href="#join" data-close-mobile style="color:var(--copper)">Join Us →</a>
+</div>
+
+<main id="main-content" role="main" tabindex="-1">
+
+<!-- HERO -->
+<section id="home" aria-label="Hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Faculty of Engineering · Mansoura University</span>
+      <h1 class="hero-title">Engineering the<br/><span>Future</span>, Today.</h1>
+      <p class="hero-sub">Ingenium is an elite student engineering team building real-world solutions, competing globally, and pushing the limits of what students can achieve.</p>
+      <div class="hero-actions">
+        <a href="#join" class="btn-primary">Join the Team →</a>
+        <a href="#projects" class="btn-outline">View Projects</a>
+      </div>
+      <div id="journey" class="hero-journey reveal" aria-labelledby="journey-heading">
+        <div class="journey-wrap">
+          <div class="journey-head">
+            <div class="section-header" style="margin-bottom:1rem">
+              <span class="section-label">// the journey</span>
+              <h3 class="section-title" id="journey-heading">THE INGENIUM JOURNEY</h3>
+            </div>
+            <p class="section-desc">From applicant to team leader — every member starts somewhere.</p>
+          </div>
+          <ul class="journey-track" role="list">
+            <li class="journey-step reveal">
+              <div class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm2 3v2h10V6H7Zm0 4v2h7v-2H7Zm0 4v2h5v-2H7Z"/></svg></div>
+              <div class="journey-content">
+                <div class="journey-number">01</div>
+                <div class="journey-title">Apply</div>
+                <div class="journey-desc">Submit your application and tell us about your interests.</div>
+              </div>
+            </li>
+            <li class="journey-step reveal reveal-delay-1">
+              <div class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 2.5a4.5 4.5 0 1 1-5 0 4.5 4.5 0 0 1 5 0Zm-2.5 13c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4Z"/></svg></div>
+              <div class="journey-content">
+                <div class="journey-number">02</div>
+                <div class="journey-title">Interview</div>
+                <div class="journey-desc">Meet the team and discuss your goals and motivation.</div>
+              </div>
+            </li>
+            <li class="journey-step featured reveal reveal-delay-2">
+              <div class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v2H4V4Zm3 6h10v2H7v-2Zm-3 6h16v2H4v-2Z"/></svg></div>
+              <div class="journey-content">
+                <div class="journey-number">03</div>
+                <div class="journey-title">Join Your Track</div>
+                <div class="journey-desc">Choose the path that matches your interests and strengths.</div>
+              </div>
+            </li>
+            <li class="journey-step reveal reveal-delay-3">
+              <div class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 3h14v2H5V3Zm0 4h14v2H5V7Zm0 4h14v2H5v-2Zm0 4h9v2H5v-2Zm0 4h9v2H5v-2Z"/></svg></div>
+              <div class="journey-content">
+                <div class="journey-number">04</div>
+                <div class="journey-title">Learn & Build</div>
+                <div class="journey-desc">Join workshops, projects, competitions, and team labs.</div>
+              </div>
+            </li>
+            <li class="journey-step reveal reveal-delay-4">
+              <div class="journey-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3 6 6 .5-4.5 4 1.5 6-5-3.5L7.5 19 9 13 4.5 9.5 10 9.5 12 2Z"/></svg></div>
+              <div class="journey-content">
+                <div class="journey-number">05</div>
+                <div class="journey-title">Lead & Grow</div>
+                <div class="journey-desc">Own your role, mentor new members, and shape Ingenium's future.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="hero-logo-graphic" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="presentation" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3.5" result="BLUR"/>
+            <feMerge>
+              <feMergeNode in="BLUR"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <filter id="deepGlow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="8" result="BLUR"/>
+            <feMerge>
+              <feMergeNode in="BLUR"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <radialGradient id="nodeGrad" cx="30%" cy="30%">
+            <stop offset="0%" stop-color="#F5C48D" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#C4753A" stop-opacity="0.6"/>
+          </radialGradient>
+          <radialGradient id="glowGrad" cx="40%" cy="40%">
+            <stop offset="0%" stop-color="#C4753A" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#C4753A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Background glow layers -->
+        <g opacity="0.12" filter="url(#deepGlow)">
+          <circle cx="600" cy="600" r="420" fill="none" stroke="#C4753A" stroke-width="2"/>
+          <circle cx="600" cy="600" r="340" fill="none" stroke="#C4753A" stroke-width="2"/>
+          <circle cx="600" cy="600" r="260" fill="none" stroke="#C4753A" stroke-width="2"/>
+          <circle cx="600" cy="600" r="180" fill="none" stroke="#C4753A" stroke-width="2"/>
+        </g>
+
+        <g class="hero-logo-root" transform="translate(600 600)">
+          <!-- Outer ring (slowest rotation) -->
+          <g class="hero-layer ring outer" opacity="0.32">
+            <circle cx="0" cy="0" r="420" fill="none" stroke="rgba(232,237,242,0.15)" stroke-width="3"/>
+            <circle cx="0" cy="0" r="420" fill="none" stroke="rgba(196,117,58,0.08)" stroke-width="1.5" filter="url(#softGlow)"/>
+          </g>
+
+          <!-- Second ring -->
+          <g class="hero-layer ring mid" opacity="0.28">
+            <circle cx="0" cy="0" r="320" fill="none" stroke="rgba(232,237,242,0.18)" stroke-width="2.5"/>
+            <circle cx="0" cy="0" r="320" fill="none" stroke="rgba(196,117,58,0.1)" stroke-width="1" filter="url(#softGlow)"/>
+          </g>
+
+          <!-- Third ring -->
+          <g class="hero-layer ring inner" opacity="0.26">
+            <circle cx="0" cy="0" r="220" fill="none" stroke="rgba(232,237,242,0.2)" stroke-width="2"/>
+            <circle cx="0" cy="0" r="220" fill="none" stroke="rgba(196,117,58,0.12)" stroke-width="0.8" filter="url(#softGlow)"/>
+          </g>
+
+          <!-- Inner/Core ring -->
+          <g class="hero-layer ring core" opacity="0.24">
+            <circle cx="0" cy="0" r="120" fill="none" stroke="rgba(232,237,242,0.22)" stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="120" fill="none" stroke="rgba(196,117,58,0.14)" stroke-width="0.6" filter="url(#softGlow)"/>
+          </g>
+
+          <!-- Horizontal circuit lines -->
+          <g class="circuit-lines" opacity="0.18">
+            <line x1="-480" y1="0" x2="480" y2="0" stroke="rgba(232,237,242,0.16)" stroke-width="1.5"/>
+            <line x1="-420" y1="0" x2="-420" y2="0" stroke="rgba(196,117,58,0.2)" stroke-width="2" filter="url(#softGlow)"/>
+            <line x1="420" y1="0" x2="420" y2="0" stroke="rgba(196,117,58,0.2)" stroke-width="2" filter="url(#softGlow)"/>
+          </g>
+
+          <!-- Vertical circuit lines -->
+          <g class="circuit-lines" opacity="0.16">
+            <line x1="0" y1="-480" x2="0" y2="480" stroke="rgba(232,237,242,0.14)" stroke-width="1.5"/>
+            <line x1="0" y1="-420" x2="0" y2="-420" stroke="rgba(196,117,58,0.18)" stroke-width="2" filter="url(#softGlow)"/>
+            <line x1="0" y1="420" x2="0" y2="420" stroke="rgba(196,117,58,0.18)" stroke-width="2" filter="url(#softGlow)"/>
+          </g>
+
+          <!-- Node positions (4 cardinal directions on outer ring) -->
+          <g class="node-cluster" filter="url(#softGlow)">
+            <circle cx="420" cy="0" r="9" fill="url(#nodeGrad)" opacity="0.9"/>
+            <circle cx="420" cy="0" r="12" fill="url(#glowGrad)"/>
+            
+            <circle cx="-420" cy="0" r="9" fill="url(#nodeGrad)" opacity="0.88"/>
+            <circle cx="-420" cy="0" r="12" fill="url(#glowGrad)"/>
+            
+            <circle cx="0" cy="420" r="9" fill="url(#nodeGrad)" opacity="0.87"/>
+            <circle cx="0" cy="420" r="12" fill="url(#glowGrad)"/>
+            
+            <circle cx="0" cy="-420" r="9" fill="url(#nodeGrad)" opacity="0.89"/>
+            <circle cx="0" cy="-420" r="12" fill="url(#glowGrad)"/>
+          </g>
+
+          <!-- Diagonal nodes on second ring -->
+          <g class="node-cluster" opacity="0.82" filter="url(#softGlow)">
+            <circle cx="226" cy="226" r="7" fill="url(#nodeGrad)"/>
+            <circle cx="226" cy="226" r="10" fill="url(#glowGrad)"/>
+            
+            <circle cx="-226" cy="226" r="7" fill="url(#nodeGrad)"/>
+            <circle cx="-226" cy="226" r="10" fill="url(#glowGrad)"/>
+            
+            <circle cx="-226" cy="-226" r="7" fill="url(#nodeGrad)"/>
+            <circle cx="-226" cy="-226" r="10" fill="url(#glowGrad)"/>
+            
+            <circle cx="226" cy="-226" r="7" fill="url(#nodeGrad)"/>
+            <circle cx="226" cy="-226" r="10" fill="url(#glowGrad)"/>
+          </g>
+
+          <!-- Inner cardinal nodes -->
+          <g class="node-cluster" opacity="0.78" filter="url(#softGlow)">
+            <circle cx="320" cy="0" r="6" fill="url(#nodeGrad)"/>
+            <circle cx="320" cy="0" r="8.5" fill="url(#glowGrad)"/>
+            
+            <circle cx="-320" cy="0" r="6" fill="url(#nodeGrad)"/>
+            <circle cx="-320" cy="0" r="8.5" fill="url(#glowGrad)"/>
+            
+            <circle cx="0" cy="320" r="6" fill="url(#nodeGrad)"/>
+            <circle cx="0" cy="320" r="8.5" fill="url(#glowGrad)"/>
+            
+            <circle cx="0" cy="-320" r="6" fill="url(#nodeGrad)"/>
+            <circle cx="0" cy="-320" r="8.5" fill="url(#glowGrad)"/>
+          </g>
+
+          <!-- Core glowing sphere with breathing effect -->
+          <g class="core-glow" opacity="0.18" filter="url(#deepGlow)">
+            <circle cx="0" cy="0" r="95" fill="none" stroke="rgba(196,117,58,0.3)" stroke-width="3"/>
+          </g>
+
+          <!-- Animated moving particles along outer path -->
+          <g class="moving-particles" aria-hidden="true">
+            <circle r="3.5" fill="#C4753A" opacity="0.4">
+              <animateMotion dur="32s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1">
+                <mpath d="M 420 0 A 420 420 0 0 1 -420 0 A 420 420 0 0 1 420 0"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0.3;0.6;0.3" dur="32s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="2.8" fill="#C4753A" opacity="0.35">
+              <animateMotion dur="32s" repeatCount="indefinite" begin="8s" keyPoints="0;1" keyTimes="0;1">
+                <mpath d="M 420 0 A 420 420 0 0 1 -420 0 A 420 420 0 0 1 420 0"/>
+              </animateMotion>
+              <animate attributeName="opacity" values="0.25;0.55;0.25" dur="32s" repeatCount="indefinite" begin="8s"/>
+            </circle>
+          </g>
+
+          <!-- Pulsing energy waves from center -->
+          <g class="energy-pulses" aria-hidden="true" opacity="0.2">
+            <circle cx="0" cy="0" r="20" fill="none" stroke="#C4753A" stroke-width="1">
+              <animate attributeName="r" values="20;150" dur="2.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.4;0" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="20" fill="none" stroke="#C4753A" stroke-width="1">
+              <animate attributeName="r" values="20;150" dur="2.8s" repeatCount="indefinite" begin="0.7s"/>
+              <animate attributeName="opacity" values="0.4;0" dur="2.8s" repeatCount="indefinite" begin="0.7s"/>
+            </circle>
+            <circle cx="0" cy="0" r="20" fill="none" stroke="#C4753A" stroke-width="1">
+              <animate attributeName="r" values="20;150" dur="2.8s" repeatCount="indefinite" begin="1.4s"/>
+              <animate attributeName="opacity" values="0.4;0" dur="2.8s" repeatCount="indefinite" begin="1.4s"/>
+            </circle>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-labelledby="about-heading">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="section-label">// about us</span>
+        <h2 class="section-title" id="about-heading">More Than Students.<br/>We're Engineers.</h2>
+        <span class="copper-line"></span>
+        <p class="section-desc" style="margin-top:1.5rem">Ingenium was founded with a single conviction: that students don't need to wait to make an impact. We tackle real engineering challenges, mentor the next generation, and compete at the highest levels — while still in university.</p>
+        <p class="section-desc" style="margin-top:1rem">Our multi-disciplinary team bridges mechanical, electrical, software, and civil engineering to deliver solutions that matter.</p>
+        <a href="#join" class="btn-primary" style="margin-top:2rem">Become a Member</a>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="about-card">
+          <span class="section-label" style="margin-bottom:1.2rem">// what makes ingenium different</span>
+          <div class="about-values">
+            <div class="val-item">
+              <div class="val-icon" aria-hidden="true">📘</div>
+              <div class="val-title">Learn</div>
+              <div class="val-desc">Gain real engineering experience beyond the classroom.</div>
+            </div>
+            <div class="val-item">
+              <div class="val-icon" aria-hidden="true">🔧</div>
+              <div class="val-title">Build</div>
+              <div class="val-desc">Work on practical projects and solve real-world problems.</div>
+            </div>
+            <div class="val-item">
+              <div class="val-icon" aria-hidden="true">🧭</div>
+              <div class="val-title">Lead</div>
+              <div class="val-desc">Develop leadership, teamwork, and communication skills.</div>
+            </div>
+            <div class="val-item">
+              <div class="val-icon" aria-hidden="true">🌟</div>
+              <div class="val-title">Impact</div>
+              <div class="val-desc">Create solutions that leave a lasting mark.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS (future-focused for first-year team) -->
+<section id="projects" aria-labelledby="projects-heading">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-label">// direction &amp; focus</span>
+      <h2 class="section-title" id="projects-heading">What We Aim To Build</h2>
+      <span class="copper-line"></span>
+      <p class="section-desc" style="margin-top:1rem">These are the engineering domains our founding team is preparing to tackle — forming teams, building skills, and developing prototype briefs.</p>
+      <div class="projects-note">Explore our focus areas and join the teams that excite you.</div>
+    </div>
+    <div class="projects-grid">
+      <article class="project-card reveal reveal-delay-1">
+        <div class="project-thumb thumb-1"><div class="project-thumb-inner" aria-hidden="true">⚙️</div></div>
+        <div class="project-body">
+          <span class="project-status status-research">Forming Team</span>
+          <h3 class="project-name">Mechanical Design</h3>
+          <p class="project-desc">Develop structural designs, CAD workflows, and rapid-prototype assemblies for student-led hardware projects and competition entries.</p>
+          <div class="tech-stack" aria-label="Tech stack">
+            <span class="tech-tag">SolidWorks</span><span class="tech-tag">Fusion 360</span><span class="tech-tag">3D Printing</span><span class="tech-tag">Sheet Metal</span>
+          </div>
+          <a href="#join" class="project-link" aria-label="Join Mechanical Design">Learn More →</a>
+        </div>
+      </article>
+      <article class="project-card reveal reveal-delay-2">
+        <div class="project-thumb thumb-2"><div class="project-thumb-inner" aria-hidden="true">🤖</div></div>
+        <div class="project-body">
+          <span class="project-status status-dev">Recruiting Members</span>
+          <h3 class="project-name">Robotics</h3>
+          <p class="project-desc">Focus on embedded control, perception stacks, and system integration for ground and aerial platforms; curriculum and small prototypes in development.</p>
+          <div class="tech-stack" aria-label="Tech stack">
+            <span class="tech-tag">Arduino</span><span class="tech-tag">C++</span><span class="tech-tag">STM32</span><span class="tech-tag">LiDAR</span>
+          </div>
+          <a href="#join" class="project-link" aria-label="Join Robotics">Learn More →</a>
+        </div>
+      </article>
+      <article class="project-card reveal reveal-delay-3">
+        <div class="project-thumb thumb-3"><div class="project-thumb-inner" aria-hidden="true">🔌</div></div>
+        <div class="project-body">
+          <span class="project-status status-dev">Under Preparation</span>
+          <h3 class="project-name">Hardware &amp; Embedded Systems</h3>
+          <p class="project-desc">Designing PCBs, power electronics, and embedded firmware for robust prototypes — lab setups and procurement plans are underway.</p>
+          <div class="tech-stack" aria-label="Tech stack">
+            <span class="tech-tag">ESP32</span><span class="tech-tag">KiCad</span><span class="tech-tag">PCB Layout</span><span class="tech-tag">Power Design</span>
+          </div>
+          <a href="#join" class="project-link" aria-label="Join Hardware">Learn More →</a>
+        </div>
+      </article>
+      <article class="project-card reveal reveal-delay-1">
+        <div class="project-thumb thumb-4"><div class="project-thumb-inner" aria-hidden="true">🧠</div></div>
+        <div class="project-body">
+          <span class="project-status status-research">Coming Soon</span>
+          <h3 class="project-name">Software &amp; AI</h3>
+          <p class="project-desc">Build full-stack tools, simulation environments, and applied ML models to support perception, control, and analytics for team projects.</p>
+          <div class="tech-stack" aria-label="Tech stack">
+            <span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Docker</span><span class="tech-tag">React</span>
+          </div>
+          <a href="#join" class="project-link" aria-label="Join Software & AI">Learn More →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" aria-labelledby="team-heading">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-label">// the people</span>
+      <h2 class="section-title" id="team-heading">Meet Our Team</h2>
+      <span class="copper-line"></span>
+      <p class="section-desc" style="margin-top:1rem">+20 engineers. One vision. Building Ingenium from the ground up.</p>
+    </div>
+    <div class="team-layout">
+      <div class="advisor-card reveal reveal-delay-1">
+        <div class="advisor-avatar" aria-hidden="true">DI</div>
+        <div class="advisor-copy">
+          <h3 class="advisor-title">Faculty Advisor</h3>
+          <p class="advisor-name">Dr. Islam Ismael</p>
+          <span class="advisor-badge">Team Supervisor</span>
+        </div>
+      </div>
+      <div class="team-grid">
+      <div class="member-card featured-card reveal reveal-delay-2">
+        <div class="member-avatar" aria-hidden="true">MS</div>
+        <div class="member-name">Mina Shaker</div>
+        <div class="member-role">Team Leader</div>
+        <div class="member-track">Leadership</div>
+      </div>
+      <div class="member-card featured-card reveal reveal-delay-3">
+        <div class="member-avatar" aria-hidden="true">AA</div>
+        <div class="member-name">Amir Adel</div>
+        <div class="member-role">Vice Team Leader</div>
+        <div class="member-track">Leadership</div>
+      </div>
+      <div class="member-card reveal reveal-delay-3">
+        <div class="member-avatar" aria-hidden="true">MB</div>
+        <div class="member-name">Mohamed Bourham</div>
+        <div class="member-role">Technical Director</div>
+        <div class="member-track">Management</div>
+      </div>
+      <div class="member-card reveal reveal-delay-4">
+        <div class="member-avatar" aria-hidden="true">SS</div>
+        <div class="member-name">Salma Salem</div>
+        <div class="member-role">Non-Technical Director</div>
+        <div class="member-track">Management</div>
+      </div>
+      <div class="member-card reveal reveal-delay-5">
+        <div class="member-avatar" aria-hidden="true">BS</div>
+        <div class="member-name">Basmala Salah</div>
+        <div class="member-role">Team HR</div>
+        <div class="member-track">Management</div>
+      </div>
+      <div class="member-card reveal reveal-delay-1">
+        <div class="member-avatar" aria-hidden="true">OS</div>
+        <div class="member-name">Omnia Sameh</div>
+        <div class="member-role">Mechanical Head</div>
+        <div class="member-track">Mechanical Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-2">
+        <div class="member-avatar" aria-hidden="true">MM</div>
+        <div class="member-name">Mazen Mohamed</div>
+        <div class="member-role">Mechanical Vice Head</div>
+        <div class="member-track">Mechanical Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-3">
+        <div class="member-avatar" aria-hidden="true">BM</div>
+        <div class="member-name">Basmala Mohamed</div>
+        <div class="member-role">Software Head</div>
+        <div class="member-track">Software Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-4">
+        <div class="member-avatar" aria-hidden="true">ME</div>
+        <div class="member-name">Malak El-Adl</div>
+        <div class="member-role">Software Vice Head</div>
+        <div class="member-track">Software Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-5">
+        <div class="member-avatar" aria-hidden="true">YM</div>
+        <div class="member-name">Yosab Mina</div>
+        <div class="member-role">Hardware Head</div>
+        <div class="member-track">Hardware Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-1">
+        <div class="member-avatar" aria-hidden="true">AB</div>
+        <div class="member-name">Abdelrahman El-Bogdady</div>
+        <div class="member-role">Hardware Vice Head</div>
+        <div class="member-track">Hardware Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-2">
+        <div class="member-avatar" aria-hidden="true">YA</div>
+        <div class="member-name">Yousef Abd El-Aziz</div>
+        <div class="member-role">Robotics Head</div>
+        <div class="member-track">Robotics Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-3">
+        <div class="member-avatar" aria-hidden="true">BM</div>
+        <div class="member-name">Basmala Mahmoud</div>
+        <div class="member-role">Robotics Vice Head</div>
+        <div class="member-track">Robotics Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-4">
+        <div class="member-avatar" aria-hidden="true">MM</div>
+        <div class="member-name">Mohamed Ramadan Mohamed</div>
+        <div class="member-role">Robotics Member</div>
+        <div class="member-track">Robotics Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-5">
+        <div class="member-avatar" aria-hidden="true">ST</div>
+        <div class="member-name">Shahd Tamer</div>
+        <div class="member-role">Robotics Member</div>
+        <div class="member-track">Robotics Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-1">
+        <div class="member-avatar" aria-hidden="true">IT</div>
+        <div class="member-name">Ibrahim Tarek</div>
+        <div class="member-role">Business Head</div>
+        <div class="member-track">Business Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-2">
+        <div class="member-avatar" aria-hidden="true">SF</div>
+        <div class="member-name">Shawky Farid</div>
+        <div class="member-role">Business Vice Head</div>
+        <div class="member-track">Business Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-3">
+        <div class="member-avatar" aria-hidden="true">OA</div>
+        <div class="member-name">Omar Adel</div>
+        <div class="member-role">Media Head</div>
+        <div class="member-track">Media Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-4">
+        <div class="member-avatar" aria-hidden="true">NN</div>
+        <div class="member-name">Nigar Nagy</div>
+        <div class="member-role">Media Vice Head</div>
+        <div class="member-track">Media Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-5">
+        <div class="member-avatar" aria-hidden="true">AA</div>
+        <div class="member-name">Aamer Ahmed</div>
+        <div class="member-role">Logistics Head</div>
+        <div class="member-track">Logistics Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-1">
+        <div class="member-avatar" aria-hidden="true">MB</div>
+        <div class="member-name">Moataaz El Batal</div>
+        <div class="member-role">Logistics Vice Head</div>
+        <div class="member-track">Logistics Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-2">
+        <div class="member-avatar" aria-hidden="true">AY</div>
+        <div class="member-name">Ali Yahya</div>
+        <div class="member-role">Robotics Member</div>
+        <div class="member-track">Robotics Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-3">
+        <div class="member-avatar" aria-hidden="true">AS</div>
+        <div class="member-name">Ahmed Samir</div>
+        <div class="member-role">Mechanical Member</div>
+        <div class="member-track">Mechanical Track</div>
+      </div>
+      <div class="member-card reveal reveal-delay-2">
+        <div class="member-avatar" aria-hidden="true">AS</div>
+        <div class="member-name">Aml Salah</div>
+        <div class="member-role">Hardware Member</div>
+        <div class="member-track">Hardware Track</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS (rewritten for first-year team) -->
+<section id="achievements" aria-labelledby="ach-heading">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-label">// milestones</span>
+      <h2 class="section-title" id="ach-heading">Our First Milestones</h2>
+      <span class="copper-line"></span>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-card reveal reveal-delay-1">
+        <div class="ach-icon" aria-hidden="true">🏁</div>
+        <h3 class="ach-title">Founded — 2026</h3>
+        <p class="ach-desc">Ingenium launched in 2026 as a student-led engineering collective focused on hands-on learning, rapid prototyping, and cross-disciplinary collaboration.</p>
+        <div class="ach-meta">Mansoura · 2026</div>
+      </div>
+      <div class="ach-card reveal reveal-delay-2">
+        <div class="ach-icon" aria-hidden="true">📣</div>
+        <h3 class="ach-title">Recruitment Open</h3>
+        <p class="ach-desc">We are actively recruiting motivated students across engineering disciplines — bring curiosity, commitment, and a willingness to build.</p>
+        <div class="ach-meta">Open Now</div>
+      </div>
+      <div class="ach-card reveal reveal-delay-3">
+        <div class="ach-icon" aria-hidden="true">🧭</div>
+        <h3 class="ach-title">Technical Tracks Launched</h3>
+        <p class="ach-desc">Core tracks for Robotics, Hardware, Mechanical Design, and Software &amp; AI have been defined to focus early team efforts and learning pathways.</p>
+        <div class="ach-meta">Tracks · 2026</div>
+      </div>
+      <div class="ach-card reveal reveal-delay-4">
+        <div class="ach-icon" aria-hidden="true">🤝</div>
+        <h3 class="ach-title">Founding Team Formation</h3>
+        <p class="ach-desc">A small founding team of students and faculty advisors has been assembled to establish labs, procurement plans, and mentorship channels.</p>
+        <div class="ach-meta">Established · 2026</div>
+      </div>
+      <div class="ach-card reveal reveal-delay-1">
+        <div class="ach-icon" aria-hidden="true">📅</div>
+        <h3 class="ach-title">First Workshops Planned</h3>
+        <p class="ach-desc">Hands-on workshops covering PCB basics, CAD fundamentals, and introductory ROS are scheduled to onboard new members this semester.</p>
+        <div class="ach-meta">Upcoming · 2026</div>
+      </div>
+      <div class="ach-card reveal reveal-delay-2">
+        <div class="ach-icon" aria-hidden="true">🔧</div>
+        <h3 class="ach-title">First Projects In Preparation</h3>
+        <p class="ach-desc">Early project briefs and team formations are underway — small-scale prototypes will be used as learning vehicles and portfolio pieces.</p>
+        <div class="ach-meta">In Preparation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" aria-labelledby="events-heading">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-label">// upcoming events</span>
+      <h2 class="section-title" id="events-heading">What's Coming</h2>
+      <span class="copper-line"></span>
+    </div>
+    <div class="events-list" role="list">
+      <div class="event-item reveal" role="listitem">
+        <div class="event-date" aria-label="July 15"><span class="event-day">15</span><span class="event-month">Jul</span></div>
+        <div>
+          <div class="event-title">Open Recruitment 2026</div>
+          <div class="event-meta">Applications open for engineering students interested in joining Ingenium's founding generation.</div>
+        </div>
+        <span class="event-tag">Recruitment</span>
+      </div>
+      <div class="event-item reveal reveal-delay-1" role="listitem">
+        <div class="event-date" aria-label="August 5"><span class="event-day">05</span><span class="event-month">Aug</span></div>
+        <div>
+          <div class="event-title">Selection &amp; Interviews</div>
+          <div class="event-meta">Shortlisted applicants meet the team and complete the member selection process.</div>
+        </div>
+        <span class="event-tag">Interviews</span>
+      </div>
+      <div class="event-item reveal reveal-delay-2" role="listitem">
+        <div class="event-date" aria-label="August 20"><span class="event-day">20</span><span class="event-month">Aug</span></div>
+        <div>
+          <div class="event-title">Orientation Day</div>
+          <div class="event-meta">Introduction to Ingenium, team culture, tracks, and our vision for the year ahead.</div>
+        </div>
+        <span class="event-tag">Community</span>
+      </div>
+      <div class="event-item reveal reveal-delay-3" role="listitem">
+        <div class="event-date" aria-label="September 3"><span class="event-day">03</span><span class="event-month">Sep</span></div>
+        <div>
+          <div class="event-title">Track Introduction Bootcamp</div>
+          <div class="event-meta">Foundational sessions for Mechanical, Robotics, Hardware, and Software tracks to onboard new members.</div>
+        </div>
+        <span class="event-tag">Workshop</span>
+      </div>
+      <div class="event-item reveal reveal-delay-4" role="listitem">
+        <div class="event-date" aria-label="September 24"><span class="event-day">24</span><span class="event-month">Sep</span></div>
+        <div>
+          <div class="event-title">First Project Kickoff</div>
+          <div class="event-meta">Formation of project teams and launch of the first engineering challenges for the founding cohort.</div>
+        </div>
+        <span class="event-tag">Project</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN US -->
+<section id="join" aria-labelledby="join-heading">
+  <div class="section-inner">
+    <div class="join-grid">
+      <div class="reveal">
+        <span class="section-label">// join the team</span>
+        <h2 class="section-title" id="join-heading">Build the Future<br/>With Us</h2>
+        <span class="copper-line"></span>
+        <p class="section-desc" style="margin-top:1.5rem">We're always looking for driven engineers who want to do more than study — they want to build, compete, and make a real impact before they graduate.</p>
+        <div class="join-perks">
+          <div class="perk">
+            <div class="perk-icon" aria-hidden="true">🛠️</div>
+            <div class="perk-text">
+              <strong>Real Project Experience</strong>
+              <span>Work on live, deployed projects — not academic exercises. Build your portfolio with genuine engineering deliverables.</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon" aria-hidden="true">🏆</div>
+            <div class="perk-text">
+              <strong>Compete Nationally &amp; Internationally</strong>
+              <span>Represent your university at engineering competitions across Egypt and globally.</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon" aria-hidden="true">🧭</div>
+            <div class="perk-text">
+              <strong>Mentorship &amp; Growth</strong>
+              <span>Learn from senior members and industry professionals who partner with our team.</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon" aria-hidden="true">🌐</div>
+            <div class="perk-text">
+              <strong>Network that Matters</strong>
+              <span>Ingenium alumni are at top companies and graduate schools worldwide. Your network starts here.</span>
+            </div>
+          </div>
+        </div>
+        <div class="join-progress">
+          <div class="join-progress-item"><span class="join-progress-dot"></span>2 MIN APPLICATION</div>
+          <div class="join-progress-line"></div>
+          <div class="join-progress-item">REVIEWED IN 14 DAYS</div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <!-- FORM CARD -->
+        <div class="form-card" id="joinFormCard">
+          <div class="form-card-head">
+            <div>
+              <h3>Application Form</h3>
+              <p>Tell us about yourself — it only takes a couple of minutes.</p>
+            </div>
+            <span class="form-count-badge">8 FIELDS</span>
+          </div>
+          <div class="form-alert error" id="joinError" role="alert" aria-live="polite"></div>
+          <form id="joinForm" accept-charset="UTF-8" novalidate aria-label="Join Ingenium application form">
+
+            <!-- PERSONAL INFO -->
+            <div class="form-fieldset">
+              <span class="form-fieldset-label">Personal Info</span>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name <span class="req" aria-label="required">*</span></label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Ahmed" autocomplete="given-name" required/>
+                  <span class="field-error" id="firstNameErr">Please enter your first name.</span>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name <span class="req" aria-label="required">*</span></label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Hassan" autocomplete="family-name" required/>
+                  <span class="field-error" id="lastNameErr">Please enter your last name.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">University Email <span class="req" aria-label="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="a.hassan@university.edu.eg" autocomplete="email" required/>
+                <span class="field-error" id="emailErr">Please enter a valid email address.</span>
+              </div>
+            </div>
+
+            <!-- ACADEMIC INFO -->
+            <div class="form-fieldset">
+              <span class="form-fieldset-label">Academic Info</span>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="department">Department <span class="req" aria-label="required">*</span></label>
+                  <select id="department" name="department" required>
+                    <option value="">Select Department</option>
+                    <option>Mechatronics Engineering</option>
+                    <option>AI Engineering</option>
+                    <option>Computer and Communication Engineering</option>
+                    <option>Biomedical Engineering</option>
+                    <option>Mechanical Engineering</option>
+                    <option>Electrical Engineering</option>
+                    <option>Electronics Engineering</option>
+                    <option>Computer Engineering</option>
+                    <option>Other</option>
+                  </select>
+                  <span class="field-error" id="departmentErr">Please select your department.</span>
+                </div>
+                <div class="form-group">
+                  <label for="academicYear">Academic Year <span class="req" aria-label="required">*</span></label>
+                  <select id="academicYear" name="academicYear" required>
+                    <option value="">Select Year</option>
+                    <option>Lvl 000</option>
+                    <option>Lvl 100</option>
+                    <option>Lvl 200</option>
+                    <option>Lvl 300</option>
+                    <option>Lvl 400</option>
+                  </select>
+                  <span class="field-error" id="yearErr">Please select your academic year.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="skills">Primary Skills <span class="opt">(optional)</span></label>
+                <input type="text" id="skills" name="skills" placeholder="e.g. Python, CAD, PCB Design, ROS" autocomplete="off"/>
+              </div>
+            </div>
+
+            <!-- TRACK SELECTION -->
+            <div class="form-fieldset">
+              <span class="form-fieldset-label">Track Interest <span class="req" aria-label="required" style="margin-left:.3rem">*</span></span>
+
+              <div role="radiogroup" aria-labelledby="trackGroupTitle">
+                <div class="track-group-label" id="trackGroupTitle"><span class="tag technical">Technical</span> Hands-on engineering tracks</div>
+                <div class="track-grid">
+                  <label class="track-card">
+                    <input type="radio" name="technicalTrack" value="Robotics" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">🤖</span>
+                      <span class="txt"><strong>Robotics</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="track-card">
+                    <input type="radio" name="technicalTrack" value="Hardware" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">🔌</span>
+                      <span class="txt"><strong>Hardware</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="track-card">
+                    <input type="radio" name="technicalTrack" value="Software" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">💻</span>
+                      <span class="txt"><strong>Software</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="track-card">
+                    <input type="radio" name="technicalTrack" value="Mechanical Design &amp; CAD" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">⚙️</span>
+                      <span class="txt"><strong>Mechanical Design &amp; CAD</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                </div>
+
+                <div class="track-group-label"><span class="tag nontechnical">Non-Technical</span> Support &amp; operations tracks</div>
+                <div class="track-grid">
+                  <label class="track-card">
+                    <input type="radio" name="nonTechnicalTrack" value="Media" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">📸</span>
+                      <span class="txt"><strong>Media</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="track-card">
+                    <input type="radio" name="nonTechnicalTrack" value="Design" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">🎨</span>
+                      <span class="txt"><strong>Design</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="track-card">
+                    <input type="radio" name="nonTechnicalTrack" value="HR &amp; PR" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">🤝</span>
+                      <span class="txt"><strong>HR &amp; PR</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="track-card">
+                    <input type="radio" name="nonTechnicalTrack" value="Business" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">💼</span>
+                      <span class="txt"><strong>Business</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                  <label class="track-card">
+                    <input type="radio" name="nonTechnicalTrack" value="Logistics" />
+                    <span class="track-card-ui">
+                      <span class="ico" aria-hidden="true">📦</span>
+                      <span class="txt"><strong>Logistics</strong></span>
+                      <span class="check" aria-hidden="true"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <span class="field-error" id="trackErr">Please select a track.</span>
+            </div>
+
+            <!-- MOTIVATION -->
+            <div class="form-fieldset">
+              <span class="form-fieldset-label">Tell Us More</span>
+              <div class="form-group">
+                <label for="motivation">Why do you want to join Ingenium? <span class="req" aria-label="required">*</span></label>
+                <textarea id="motivation" name="motivation" placeholder="Tell us what drives you and what you hope to build with us..." required minlength="20" maxlength="800"></textarea>
+                <div class="char-count" id="motivationCount">0 / 800</div>
+                <span class="field-error" id="motivationErr">Please share your motivation (at least 20 characters).</span>
+              </div>
+            </div>
+
+            <input type="hidden" id="technicalTrack" name="technicalTrackHidden" aria-hidden="true" />
+            <input type="hidden" id="nonTechnicalTrack" name="nonTechnicalTrackHidden" aria-hidden="true" />
+            <button type="submit" class="submit-btn" id="joinSubmitBtn">
+              <span id="joinBtnText">SUBMIT APPLICATION</span>
+              <span class="spinner" id="joinSpinner" aria-hidden="true"></span>
+            </button>
+            <p class="submit-note">By submitting, you agree to be contacted by the Ingenium team regarding your application.</p>
+          </form>
+        </div>
+        <!-- SUCCESS STATE -->
+        <div class="form-success" id="formSuccess" role="alert" aria-live="polite" tabindex="-1">
+          <div class="check-circle" aria-hidden="true">✅</div>
+          <h3>Application Received!</h3>
+          <p>We review applications every two weeks. Expect to hear from us at your email within 14 days. In the meantime, follow us on social media to stay updated on events and announcements.</p>
+          <div class="success-ref" id="successRef"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="section-label">// contact us</span>
+        <h2 class="section-title" id="contact-heading">Get in Touch</h2>
+        <span class="copper-line"></span>
+        <p class="section-desc" style="margin-top:1.5rem">Whether you're a potential sponsor, a faculty partner, or a student with questions — we'd love to hear from you.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">📍</div>
+            <div class="contact-item-text">
+              <strong>Location</strong>
+              <span>Faculty of Engineering<br/>Mansoura University, Mansoura, Egypt</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">📧</div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <span><a href="mailto:ingeniummteam@gmail.com" style="color:var(--copper);text-decoration:none">ingeniummteam@gmail.com</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">📅</div>
+            <div class="contact-item-text">
+              <strong>Weekly Meetings</strong>
+              <span>To Be Scheduled</span>
+            </div>
+          </div>
+        </div>
+        <div class="social-row">
+          </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="contact-form-card">
+          <span class="section-label" style="margin-bottom:1.5rem">// send a message</span>
+          <div class="form-alert" id="contactAlert" role="alert" aria-live="polite"></div>
+          <form id="contactForm" novalidate aria-label="Contact form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Name <span class="req" aria-label="required">*</span></label>
+                <input type="text" id="contactName" name="contactName" placeholder="Your name" autocomplete="name" required/>
+                <span class="field-error" id="contactNameErr">Please enter your name.</span>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email <span class="req" aria-label="required">*</span></label>
+                <input type="email" id="contactEmail" name="contactEmail" placeholder="your@email.com" autocomplete="email" required/>
+                <span class="field-error" id="contactEmailErr">Please enter a valid email.</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject <span class="req" aria-label="required">*</span></label>
+              <input type="text" id="subject" name="subject" placeholder="Partnership inquiry / Sponsorship / Question" required/>
+              <span class="field-error" id="subjectErr">Please enter a subject.</span>
+            </div>
+            <div class="form-group">
+              <label for="message">Message <span class="req" aria-label="required">*</span></label>
+              <textarea id="message" name="message" placeholder="How can we help you?" style="min-height:130px" required></textarea>
+              <span class="field-error" id="messageErr">Please enter your message.</span>
+            </div>
+            <button type="submit" class="submit-btn" id="contactSubmitBtn">
+              <span id="contactBtnText">SEND MESSAGE</span>
+              <span class="spinner" id="contactSpinner" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Ingenium Engineering Team" width="44" height="44" loading="lazy" decoding="async" onerror="this.style.display='none'"/>
+        <p>An elite student engineering team building real-world solutions, competing globally, and shaping the engineers of tomorrow.</p>
+        <div class="footer-social" style="margin-top:1.2rem">
+          </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tracks</h4>
+        <ul>
+          <li><a href="#join">Robotics</a></li>
+          <li><a href="#join">Hardware</a></li>
+          <li><a href="#join">Software &amp; AI</a></li>
+          <li><a href="#join">Mechanical Design</a></li>
+         
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li><a href="#contact">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© <span id="footerYear">2026</span> <span class="footer-copper">Ingenium</span> Engineering Team · Mansoura University · All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─────────────────────────────────────────────
+  GOOGLE SHEETS ENDPOINT
+  (Both forms submit to the same Apps Script Web App URL)
+───────────────────────────────────────────── */
+const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYKVoKLX3twY1hAfavp6fy2sVRowK0KX1a849ZwtJd09HYd7BmkRshT21I6w4nOzRC/exec';
+
+/* ─────────────────────────────────────────────
+   FOOTER YEAR (auto-updates)
+───────────────────────────────────────────── */
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+/* ─────────────────────────────────────────────
+   NAV — scroll style
+───────────────────────────────────────────── */
+const navbar = document.getElementById('navbar');
+function updateNavScroll() {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}
+window.addEventListener('scroll', updateNavScroll, { passive: true });
+updateNavScroll();
+
+/* ─────────────────────────────────────────────
+   NAV — active section highlighting
+───────────────────────────────────────────── */
+const sections = Array.from(document.querySelectorAll('section[id]'));
+const navLinks = document.querySelectorAll('.nav-links a');
+
+function updateActiveNav() {
+  const scrollY = window.scrollY + 120;
+  let current = sections[0].id;
+  sections.forEach(s => { if (scrollY >= s.offsetTop) current = s.id; });
+  navLinks.forEach(a => {
+    const href = a.getAttribute('href');
+    const isActive = href === '#' + current;
+    a.classList.toggle('active', isActive && !a.classList.contains('nav-cta'));
+  });
+}
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+updateActiveNav();
+
+/* ─────────────────────────────────────────────
+   HERO LOGO PARALLAX & MOTION
+───────────────────────────────────────────── */
+(function() {
+  const heroSection = document.getElementById('home');
+  const heroSvg = document.querySelector('.hero-logo-graphic');
+  if (!heroSection || !heroSvg) return;
+
+  const layers = {
+    outer: heroSvg.querySelector('.outer-ring'),
+    inner: heroSvg.querySelector('.inner-ring'),
+    core: heroSvg.querySelector('.core-parallax'),
+    signal: heroSvg.querySelector('.signal-ring'),
+  };
+
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const applyMotion = (x, y) => {
+    const outerX = `${x * 4}px`;
+    const outerY = `${y * 3}px`;
+    const innerX = `${x * -3}px`;
+    const innerY = `${y * -2}px`;
+    const coreX = `${x * 1.2}px`;
+    const coreY = `${y * 1}px`;
+    const signalX = `${x * -1}px`;
+    const signalY = `${y * 1}px`;
+
+    if (layers.outer) layers.outer.style.transform = `translate(${outerX}, ${outerY})`;
+    if (layers.inner) layers.inner.style.transform = `translate(${innerX}, ${innerY})`;
+    if (layers.core) layers.core.style.transform = `translate(${coreX}, ${coreY})`;
+    if (layers.signal) layers.signal.style.transform = `translate(${signalX}, ${signalY})`;
+  };
+
+  let latestX = 0;
+  let latestY = 0;
+  let framePending = false;
+
+  const updatePointer = (clientX, clientY) => {
+    const rect = heroSection.getBoundingClientRect();
+    const px = clamp((clientX - rect.left) / rect.width * 2 - 1, -1, 1);
+    const py = clamp((clientY - rect.top) / rect.height * 2 - 1, -1, 1);
+    latestX = px;
+    latestY = py;
+    if (!framePending) {
+      framePending = true;
+      window.requestAnimationFrame(() => {
+        applyMotion(latestX, latestY);
+        framePending = false;
+      });
+    }
+  };
+
+  const resetPointer = () => applyMotion(0, 0);
+
+  heroSection.addEventListener('pointermove', e => {
+    updatePointer(e.clientX, e.clientY);
+  });
+  heroSection.addEventListener('pointerleave', resetPointer);
+
+  const handleOrientation = event => {
+    if (typeof event.gamma !== 'number' || typeof event.beta !== 'number') return;
+    const x = clamp(event.gamma / 18, -1, 1);
+    const y = clamp(event.beta / 18, -1, 1);
+    applyMotion(x, y);
+  };
+
+  if (window.DeviceOrientationEvent && typeof window.DeviceOrientationEvent.requestPermission === 'function') {
+    window.addEventListener('click', async () => {
+      try {
+        const permission = await DeviceOrientationEvent.requestPermission();
+        if (permission === 'granted') {
+          window.addEventListener('deviceorientation', handleOrientation, true);
+        }
+      } catch (err) {
+        // ignore on unsupported devices
+      }
+    }, { once: true });
+  } else {
+    window.addEventListener('deviceorientation', handleOrientation, true);
+  }
+})();
+
+/* ─────────────────────────────────────────────
+   HAMBURGER / MOBILE MENU
+───────────────────────────────────────────── */
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobileMenu');
+const mc  = document.getElementById('mobileClose');
+
+ham.addEventListener('click', () => {
+  const open = mob.classList.toggle('open');
+  ham.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mc.addEventListener('click', closeMobile);
+document.querySelectorAll('[data-close-mobile]').forEach(link => {
+  link.addEventListener('click', closeMobile);
+});
+mob.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
+
+function closeMobile() {
+  mob.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ─────────────────────────────────────────────
+   FORM UTILITIES
+───────────────────────────────────────────── */
+function setFieldState(input, errEl, valid, msg) {
+  if (!input) return false;
+  input.classList.toggle('invalid', !valid);
+  input.setAttribute('aria-invalid', String(!valid));
+  if (errEl) {
+    if (valid) {
+      errEl.classList.remove('show');
+    } else {
+      errEl.textContent = msg || errEl.textContent;
+      errEl.classList.add('show');
+    }
+  }
+  return valid;
+}
+
+function validateEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+}
+
+function showAlert(elId, type, msg) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  el.textContent = msg;
+  el.className = 'form-alert ' + type + ' show';
+}
+function hideAlert(elId) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  el.className = 'form-alert';
+  el.textContent = '';
+}
+
+function setLoading(btnId, spinnerId, textId, loading) {
+  const btn = document.getElementById(btnId);
+  const sp  = document.getElementById(spinnerId);
+  const tx  = document.getElementById(textId);
+  if (btn) btn.disabled = loading;
+  if (sp) sp.style.display = loading ? 'block' : 'none';
+  if (tx) tx.style.opacity = loading ? '0.6' : '1';
+}
+
+/* ─────────────────────────────────────────────
+   JOIN FORM — validation
+───────────────────────────────────────────── */
+function validateJoinForm() {
+  let ok = true;
+  const fn = document.getElementById('firstName');
+  const ln = document.getElementById('lastName');
+  const em = document.getElementById('email');
+  const dp = document.getElementById('department');
+  const yr = document.getElementById('academicYear');
+  const mo = document.getElementById('motivation');
+  const techChecked = document.querySelector('input[name="technicalTrack"]:checked');
+  const nonTechChecked = document.querySelector('input[name="nonTechnicalTrack"]:checked');
+  const trackErrEl = document.getElementById('trackErr');
+
+  if (!setFieldState(fn, document.getElementById('firstNameErr'), fn.value.trim().length >= 2, 'Please enter your first name (min 2 chars).')) ok = false;
+  if (!setFieldState(ln, document.getElementById('lastNameErr'), ln.value.trim().length >= 2, 'Please enter your last name (min 2 chars).')) ok = false;
+  if (!setFieldState(em, document.getElementById('emailErr'), validateEmail(em.value), 'Please enter a valid email address.')) ok = false;
+  if (!setFieldState(dp, document.getElementById('departmentErr'), dp.value !== '', 'Please select your department.')) ok = false;
+  if (!setFieldState(yr, document.getElementById('yearErr'), yr.value !== '', 'Please select your academic year.')) ok = false;
+  if (!setFieldState(mo, document.getElementById('motivationErr'), mo.value.trim().length >= 20, 'Please share your motivation (min 20 characters).')) ok = false;
+
+  if (!techChecked && !nonTechChecked) {
+    trackErrEl.classList.add('show');
+    ok = false;
+  } else {
+    trackErrEl.classList.remove('show');
+  }
+  return ok;
+}
+
+/* ─────────────────────────────────────────────
+   JOIN FORM — submit to Google Sheets
+───────────────────────────────────────────── */
+document.getElementById('joinForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  hideAlert('joinError');
+
+  if (!validateJoinForm()) {
+    showAlert('joinError', 'error', 'Please fix the errors above before submitting.');
+    const firstInvalid = document.querySelector('.invalid, .field-error.show');
+    if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  setLoading('joinSubmitBtn', 'joinSpinner', 'joinBtnText', true);
+
+  const selectedTech = document.querySelector('input[name="technicalTrack"]:checked');
+  const selectedNonTech = document.querySelector('input[name="nonTechnicalTrack"]:checked');
+
+  // Mirror selections into hidden inputs with matching IDs for compatibility
+  const ht = document.getElementById('technicalTrack');
+  const hnt = document.getElementById('nonTechnicalTrack');
+  const technicalTrack = selectedTech ? selectedTech.value : '';
+  const nonTechnicalTrack = selectedNonTech ? selectedNonTech.value : '';
+  if (ht) ht.value = technicalTrack;
+  if (hnt) hnt.value = nonTechnicalTrack;
+  // Build payload with explicit named properties in the exact order the Apps Script expects.
+  const payload = {
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName: document.getElementById('lastName').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    department: document.getElementById('department').value,
+    year: document.getElementById('academicYear').value,
+    skills: document.getElementById('skills').value.trim(),
+    technicalTrack,
+    nonTechnicalTrack,
+    motivation: document.getElementById('motivation').value.trim()
+  };
+
+  // Debug: show exact payload in console before sending
+  console.log('Join form payload:', payload);
+
+  try {
+    const result = await submitApplication(payload);
+
+    // Success: show the friendly success state and reference
+    document.getElementById('joinFormCard').style.display = 'none';
+    document.getElementById('formSuccess').style.display  = 'block';
+    const refEl = document.getElementById('successRef');
+    if (refEl) {
+      const ref = (result && (result.reference || result.ref || result.id)) || new Date().toISOString();
+      refEl.textContent = 'Reference: ' + ref;
+    }
+    document.getElementById('formSuccess').focus();
+    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (err) {
+    console.error('Join form error:', err);
+    showAlert('joinError', 'error', err.message || 'Submission failed. Please try again later.');
+  } finally {
+    setLoading('joinSubmitBtn', 'joinSpinner', 'joinBtnText', false);
+  }
+});
+
+/* Helper: submitApplication follows the required pattern and returns parsed JSON */
+async function submitApplication(payload) {
+  // Use no-cors and text/plain to avoid preflight OPTIONS on Google Apps Script
+  // while preserving a JSON-structured body that the Apps Script can parse.
+  // Log the exact payload immediately before the network send (required)
+  try { console.log('Submitting payload:', payload); } catch (e) {}
+
+  const response = await fetch(APP_SCRIPT_URL, {
+    method: 'POST',
+    mode:   'no-cors',
+    cache:  'no-store',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload)
+  });
+
+  if (response.type === 'opaque') {
+    // No-CORS responses cannot be inspected; assume success if the request completed.
+    return { success: true };
+  }
+
+  let result = null;
+  try {
+    result = await response.json();
+  } catch (err) {
+    if (response.ok) {
+      return { success: true };
+    }
+    throw new Error('Invalid server response (not JSON)');
+  }
+
+  if (!response.ok || !result.success) {
+    throw new Error(result.error || 'Submission failed');
+  }
+
+  return result;
+}
+
+/* ─────────────────────────────────────────────
+   JOIN FORM — motivation character counter
+───────────────────────────────────────────── */
+(function() {
+  const ta = document.getElementById('motivation');
+  const counter = document.getElementById('motivationCount');
+  if (!ta || !counter) return;
+  const max = parseInt(ta.getAttribute('maxlength'), 10) || 800;
+  function updateCount() {
+    counter.textContent = ta.value.length + ' / ' + max;
+  }
+  ta.addEventListener('input', updateCount);
+  updateCount();
+})();
+
+/* ─────────────────────────────────────────────
+   JOIN FORM — clear track error on selection
+───────────────────────────────────────────── */
+document.querySelectorAll('input[name="technicalTrack"], input[name="nonTechnicalTrack"]').forEach(input => {
+  input.addEventListener('change', () => {
+    const errEl = document.getElementById('trackErr');
+    if (errEl) errEl.classList.remove('show');
+    // keep hidden inputs in sync immediately when a radio selection changes
+    const selTech = document.querySelector('input[name="technicalTrack"]:checked');
+    const selNonTech = document.querySelector('input[name="nonTechnicalTrack"]:checked');
+    const hTech = document.getElementById('technicalTrack');
+    const hNon = document.getElementById('nonTechnicalTrack');
+    if (hTech) hTech.value = selTech ? selTech.value : '';
+    if (hNon) hNon.value = selNonTech ? selNonTech.value : '';
+  });
+});
+
+/* ─────────────────────────────────────────────
+   CONTACT FORM — validation & submit
+───────────────────────────────────────────── */
+function validateContactForm() {
+  let ok = true;
+  const cn = document.getElementById('contactName');
+  const ce = document.getElementById('contactEmail');
+  const sb = document.getElementById('subject');
+  const ms = document.getElementById('message');
+
+  if (!setFieldState(cn, document.getElementById('contactNameErr'), cn.value.trim().length >= 2)) ok = false;
+  if (!setFieldState(ce, document.getElementById('contactEmailErr'), validateEmail(ce.value))) ok = false;
+  if (!setFieldState(sb, document.getElementById('subjectErr'), sb.value.trim().length >= 3)) ok = false;
+  if (!setFieldState(ms, document.getElementById('messageErr'), ms.value.trim().length >= 10)) ok = false;
+  return ok;
+}
+
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  hideAlert('contactAlert');
+
+  if (!validateContactForm()) {
+    showAlert('contactAlert', 'error', 'Please fill in all required fields.');
+    return;
+  }
+
+  setLoading('contactSubmitBtn', 'contactSpinner', 'contactBtnText', true);
+
+  const payload = {
+    formType: 'contact',
+    name:     document.getElementById('contactName').value.trim(),
+    email:    document.getElementById('contactEmail').value.trim(),
+    subject:  document.getElementById('subject').value.trim(),
+    message:  document.getElementById('message').value.trim()
+  };
+
+  try {
+    await submitApplication(payload);
+    document.getElementById('contactForm').reset();
+    showAlert('contactAlert', 'success-alert', '✓ Message sent! We\'ll get back to you within 2 business days.');
+  } catch (err) {
+    console.error('Contact form error:', err);
+    showAlert('contactAlert', 'error', 'Failed to send. Please email us at ingeniummteam@gmail.com.');
+  } finally {
+    setLoading('contactSubmitBtn', 'contactSpinner', 'contactBtnText', false);
+  }
+});
+
+/* ─────────────────────────────────────────────
+   LIVE FIELD VALIDATION (clear errors on input)
+───────────────────────────────────────────── */
+document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(el => {
+  const errEl = document.getElementById(el.id + 'Err');
+  if (errEl) {
+    el.setAttribute('aria-describedby', errEl.id);
+  }
+
+  el.addEventListener('input', function() {
+    this.classList.remove('invalid');
+    this.setAttribute('aria-invalid', 'false');
+    const errEl = document.getElementById(this.id + 'Err');
+    if (errEl) errEl.classList.remove('show');
+  });
+});
+
+// Ensure external links open safely in a new tab.
+document.querySelectorAll('a[href^="http"]').forEach(link => {
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+});
+
+/* ─────────────────────────────────────────────
+   Keyboard accessibility: activate cards with Enter/Space
+───────────────────────────────────────────── */
+document.querySelectorAll('.project-card').forEach(el => {
+  el.setAttribute('tabindex', '0');
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const link = el.querySelector('a[href]:not([href="#"])');
+      if (link) {
+        e.preventDefault();
+        link.click();
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
+
+
+
+
