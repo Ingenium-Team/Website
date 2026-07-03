@@ -158,10 +158,22 @@ initSortable();
 
 <div class="member-card" data-id="${member.id}">
 <div class="drag-handle">☰</div>
-            <img src="${
-                member.image_url ||
-                "https://ui-avatars.com/api/?name="+encodeURIComponent(member.full_name)+"&background=081C2D&color=fff"
-            }">
+ ${
+    member.image_url
+        ? `<img
+                class="member-avatar-img"
+                src="${member.image_url}"
+                alt="${member.full_name}">
+          `
+        : `<div class="member-avatar">
+                ${(member.full_name || "?")
+                    .split(" ")
+                    .map(word => word[0])
+                    .join("")
+                    .substring(0,2)
+                    .toUpperCase()}
+           </div>`
+}
 
             <h3>${member.full_name}</h3>
 
