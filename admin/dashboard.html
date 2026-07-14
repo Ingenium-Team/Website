@@ -1,124 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingenium Dashboard</title>
-
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-cms.css">
 </head>
-
 <body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">I</div>
+                <div>
+                    <h2>Ingenium</h2>
+                    <p>Admin Workspace</p>
+                </div>
+            </div>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
+            <nav class="sidebar-nav">
+                <button class="nav-link active" data-view="dashboardView" type="button"><span class="nav-icon">🏠</span><span>Dashboard</span></button>
+                <button class="nav-link" data-view="membersView" type="button"><span class="nav-icon">👥</span><span>Team Members</span></button>
+                <button class="nav-link" data-view="projectsView" type="button"><span class="nav-icon">📁</span><span>Projects</span></button>
+                <button class="nav-link" data-view="achievementsView" type="button"><span class="nav-icon">🏆</span><span>Achievements</span></button>
+                <button class="nav-link" data-view="eventsView" type="button"><span class="nav-icon">📅</span><span>Events</span></button>
+                <button class="nav-link" data-view="galleryView" type="button"><span class="nav-icon">🖼</span><span>Gallery</span></button>
+                <button class="nav-link" data-view="messagesView" type="button"><span class="nav-icon">📨</span><span>Messages</span></button>
+                <button class="nav-link" data-view="settingsView" type="button"><span class="nav-icon">⚙</span><span>Settings</span></button>
+            </nav>
 
-        <h2>Ingenium</h2>
+            <div class="sidebar-footer">
+                <button class="btn secondary-btn" id="logoutBtn" type="button">Logout</button>
+            </div>
+        </aside>
 
-        <a href="#">🏠 Dashboard</a>
-        <a href="#" id="teamBtn">👥 Team Members</a>
-        <a href="#">📁 Projects</a>
-        <a href="#">🏆 Achievements</a>
-        <a href="#">📅 Events</a>
-        <a href="#">🖼 Gallery</a>
-        <a href="#">📨 Messages</a>
-        <a href="#">⚙ Settings</a>
+        <main class="main-panel">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobileToggle" type="button">☰</button>
+                    <div class="topbar-title">
+                        <h1>Admin Dashboard</h1>
+                        <p id="userName" class="eyebrow"></p>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <div class="topbar-chip">System Healthy</div>
+                    <div class="profile-pill">👤</div>
+                </div>
+            </header>
 
-        <hr>
+            <section class="content-area">
+                <div class="view-panel active" id="dashboardView">
+                    <div class="dashboard-hero">
+                        <div class="hero-card">
+                            <p class="eyebrow">Operations overview</p>
+                            <h2>Welcome back to the Ingenium command center.</h2>
+                            <p>Monitor your team, review growth, and keep the department running smoothly from one polished workspace.</p>
+                        </div>
+                        <div class="hero-card">
+                            <p class="eyebrow">Recent focus</p>
+                            <h2>Team health at a glance</h2>
+                            <p>Track member structure, member roles, and upcoming initiatives from the updated dashboard cards.</p>
+                        </div>
+                    </div>
+                    <div class="stats-grid" id="statsGrid"></div>
+                </div>
 
-        <button id="logoutBtn">Logout</button>
+                <div class="view-panel" id="membersView">
+                    <div class="toolbar">
+                        <label class="toolbar-search" for="memberSearch">
+                            <span>🔎</span>
+                            <input id="memberSearch" type="search" placeholder="Search by name, role, or department">
+                        </label>
+                        <button class="primary-btn" id="addMemberBtn" type="button">+ Add Member</button>
+                    </div>
 
+                    <div class="track-filters" id="trackFilters"></div>
+                    <div id="membersGrid"></div>
+                </div>
+
+                <div class="view-panel" id="projectsView">
+                    <div class="toolbar">
+                        <label class="toolbar-search" for="projectSearch">
+                            <span>🔎</span>
+                            <input id="projectSearch" type="search" placeholder="Search Project">
+                        </label>
+                        <select class="toolbar-select" id="projectStatusFilter">
+                            <option value="">Filter by Status</option>
+                            <option value="Planned">Planned</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Live">Live</option>
+                        </select>
+                        <select class="toolbar-select" id="projectCategoryFilter">
+                            <option value="">Filter by Category</option>
+                        </select>
+                        <select class="toolbar-select" id="projectSort">
+                            <option value="display_order">Sort</option>
+                            <option value="featured">Featured First</option>
+                            <option value="title">Title</option>
+                            <option value="progress">Progress</option>
+                        </select>
+                        <button class="primary-btn" id="addProjectBtn" type="button">+ Add Project</button>
+                    </div>
+                    <div id="projectsGrid" class="projects-grid"></div>
+                </div>
+
+                <div class="view-panel" id="achievementsView">
+                    <div class="toolbar">
+                        <label class="toolbar-search" for="achievementSearch">
+                            <span>🔎</span>
+                            <input id="achievementSearch" type="search" placeholder="Search achievements...">
+                        </label>
+                        <button class="primary-btn" id="addAchievementBtn" type="button">+ Add Achievement</button>
+                    </div>
+                    <div id="achievementsGrid" class="achievements-grid"></div>
+                </div>
+
+                <div class="view-panel" id="eventsView">
+                    <div class="toolbar">
+                        <label class="toolbar-search" for="eventSearch">
+                            <span>🔎</span>
+                            <input id="eventSearch" type="search" placeholder="Search events...">
+                        </label>
+                        <button class="primary-btn" id="addEventBtn" type="button">+ Add Event</button>
+                    </div>
+                    <div id="eventsGrid" class="events-grid"></div>
+                </div>
+
+                <div class="view-panel" id="galleryView">
+                    <div class="toolbar">
+                        <label class="toolbar-search" for="gallerySearch">
+                            <span>🔎</span>
+                            <input id="gallerySearch" type="search" placeholder="Search gallery...">
+                        </label>
+                        <button class="primary-btn" id="addGalleryBtn" type="button">+ Add Image</button>
+                    </div>
+                    <div id="galleryGrid" class="gallery-grid"></div>
+                </div>
+
+                <div class="view-panel" id="messagesView">
+                    <div class="placeholder-grid">
+                        <div class="placeholder-card panel-card">
+                            <h3>Messages</h3>
+                            <p>Internal communications and direct messages can be surfaced here later.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="view-panel" id="settingsView">
+                    <div class="toolbar">
+                        <label class="toolbar-search" for="settingsSearch">
+                            <span>🔎</span>
+                            <input id="settingsSearch" type="search" placeholder="Search settings...">
+                        </label>
+                        <button class="ghost-btn" id="resetSettingsBtn" type="button">Reset</button>
+                        <button class="primary-btn" id="saveSettingsBtn" type="button">Save All</button>
+                    </div>
+                    <div id="settingsContent" class="settings-shell"></div>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <!-- Main Content -->
-    <div class="content">
-
-        <div class="topbar">
-
-            <div>
-                <h2>Dashboard</h2>
-                <p id="userName"></p>
+    <div class="modal" id="memberModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="memberFormTitle">Add Team Member</h3>
+                <button class="modal-close" data-modal-close="memberModal" type="button">×</button>
             </div>
-
-            <div class="profile">
-                👤
+            <div class="form-grid">
+                <div class="field">
+                    <label for="memberName">Full Name</label>
+                    <input id="memberName" type="text" placeholder="Full Name">
+                </div>
+                <div class="field">
+                    <label for="department">Department</label>
+                    <select id="department">
+                        <option value="Leadership">Leadership</option>
+                        <option value="Management">Management</option>
+                        <option value="Mechanical Track">Mechanical Track</option>
+                        <option value="Software Track">Software Track</option>
+                        <option value="Hardware Track">Hardware Track</option>
+                        <option value="Robotics Track">Robotics Track</option>
+                        <option value="Business Track">Business Track</option>
+                        <option value="Media Track">Media Track</option>
+                        <option value="Logistics Track">Logistics Track</option>
+                        <option value="HR Track">HR Track</option>
+                        <option value="German Track">German Track</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="memberRole">Role</label>
+                    <select id="memberRole"></select>
+                </div>
+                <div class="field">
+                    <label for="memberEmail">Email</label>
+                    <input id="memberEmail" type="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <label for="displayOrder">Display Order</label>
+                    <input id="displayOrder" type="number" placeholder="Display Order">
+                </div>
+                <div class="field">
+                    <label>Photo</label>
+                    <div class="image-dropzone" id="imageDropzone">
+                        <div class="image-preview-wrapper">
+                            <img class="image-preview" id="previewImage" src="" alt="Preview" style="display:none;">
+                            <span>Drag & drop an image here or click to browse</span>
+                        </div>
+                        <input id="memberImage" type="file" accept="image/*" hidden>
+                    </div>
+                </div>
             </div>
-
+            <div class="confirm-actions">
+                <button class="ghost-btn" data-modal-close="memberModal" type="button">Cancel</button>
+                <button class="primary-btn" id="saveMemberBtn" type="button">Add Member</button>
+            </div>
         </div>
-
-        <div id="teamSection">
-
-            <div class="section-header">
-
-                <h2>Team Members</h2>
-
-                <button id="addMemberBtn">
-                    + Add Member
-                </button>
-
-            </div>
-
-            <div id="membersGrid"></div>
-
-        </div>
-
     </div>
 
-    <!-- Add Member Modal -->
-    <div id="memberModal" class="modal">
-
-        <div class="modal-content">
-
-            <h2>Add Team Member</h2>
-
-            <input type="text" id="memberName" placeholder="Full Name">
-
-            <select id="memberRole">
-                <option value="">Select Role</option>
-                <option>Team Leader</option>
-                <option>Vice Leader</option>
-                <option>HR Head</option>
-                <option>Technical Head</option>
-                <option>Non-Technical Head</option>
-                <option>Member</option>
-            </select>
-
-<select id="department">
-    <option value="Leadership">Leadership</option>
-    <option value="Management">Management</option>
-    <option value="Mechanical Track">Mechanical Track</option>
-    <option value="Software Track">Software Track</option>
-    <option value="Hardware Track">Hardware Track</option>
-    <option value="Robotics Track">Robotics Track</option>
-    <option value="Business Track">Business Track</option>
-    <option value="Media Track">Media Track</option>
-    <option value="Logistics Track">Logistics Track</option>
-</select>
-            <input type="email" id="memberEmail" placeholder="Email">
-
-            <input
-    type="number"
-    id="displayOrder"
-    placeholder="Display Order">
-
-            <label>Photo (Optional)</label>
-            <input type="file" id="memberImage" accept="image/*">
-
-            <button id="saveMemberBtn">
-                Save Member
-            </button>
-
+    <div class="modal" id="achievementModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>New Achievement</h3>
+                <button class="modal-close" data-modal-close="achievementModal" type="button">×</button>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="achievementTitle">Title</label>
+                    <input id="achievementTitle" type="text" placeholder="Achievement Title">
+                </div>
+                <div class="field">
+                    <label for="achievementDate">Date</label>
+                    <input id="achievementDate" type="date">
+                </div>
+                <div class="field full-width">
+                    <label for="achievementDesc">Description</label>
+                    <textarea id="achievementDesc" placeholder="Describe the achievement..."></textarea>
+                </div>
+                <div class="field">
+                    <label for="achievementCategory">Category</label>
+                    <input id="achievementCategory" type="text" placeholder="e.g., Milestone, Award, Recognition">
+                </div>
+                <div class="field">
+                    <label for="achievementDisplayOrder">Display Order</label>
+                    <input id="achievementDisplayOrder" type="number" placeholder="0" min="0">
+                </div>
+                <div class="field">
+                    <label for="achievementFeatured">
+                        <input id="achievementFeatured" type="checkbox" style="margin-right: 0.5rem;">
+                        Featured
+                    </label>
+                </div>
+                <div class="field full-width">
+                    <label>Image</label>
+                    <div class="image-dropzone" id="achievementImageDropzone">
+                        <div class="image-preview-wrapper">
+                            <div id="achievementImagePreview">No image</div>
+                        </div>
+                        <input id="achievementImageInput" type="file" accept="image/*" hidden data-url="">
+                    </div>
+                </div>
+            </div>
+            <div class="confirm-actions">
+                <button class="ghost-btn" data-modal-close="achievementModal" type="button">Cancel</button>
+                <button class="primary-btn" id="saveAchievementBtn" type="button">Save Achievement</button>
+            </div>
         </div>
+    </div>
 
+    <div class="modal" id="eventModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>New Event</h3>
+                <button class="modal-close" data-modal-close="eventModal" type="button">×</button>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="eventTitle">Title</label>
+                    <input id="eventTitle" type="text" placeholder="Event Title">
+                </div>
+                <div class="field">
+                    <label for="eventDate">Date</label>
+                    <input id="eventDate" type="date">
+                </div>
+                <div class="field">
+                    <label for="eventTime">Time</label>
+                    <input id="eventTime" type="time">
+                </div>
+                <div class="field">
+                    <label for="eventLocation">Location</label>
+                    <input id="eventLocation" type="text" placeholder="Event Location">
+                </div>
+                <div class="field full-width">
+                    <label for="eventDesc">Description</label>
+                    <textarea id="eventDesc" placeholder="Describe the event..."></textarea>
+                </div>
+                <div class="field">
+                    <label for="eventRegistrationLink">Registration Link</label>
+                    <input id="eventRegistrationLink" type="url" placeholder="https://...">
+                </div>
+                <div class="field">
+                    <label for="eventDisplayOrder">Display Order</label>
+                    <input id="eventDisplayOrder" type="number" placeholder="0" min="0">
+                </div>
+                <div class="field">
+                    <label for="eventFeatured">
+                        <input id="eventFeatured" type="checkbox" style="margin-right: 0.5rem;">
+                        Featured
+                    </label>
+                </div>
+                <div class="field">
+                    <label for="eventVisible">
+                        <input id="eventVisible" type="checkbox" checked style="margin-right: 0.5rem;">
+                        Visible
+                    </label>
+                </div>
+                <div class="field full-width">
+                    <label>Image</label>
+                    <div class="image-dropzone" id="eventImageDropzone">
+                        <div class="image-preview-wrapper">
+                            <div id="eventImagePreview">No image</div>
+                        </div>
+                        <input id="eventImageInput" type="file" accept="image/*" hidden data-url="">
+                    </div>
+                </div>
+            </div>
+            <div class="confirm-actions">
+                <button class="ghost-btn" data-modal-close="eventModal" type="button">Cancel</button>
+                <button class="primary-btn" id="saveEventBtn" type="button">Save Event</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="projectModalTitle">New Project</h3>
+                <button class="modal-close" data-modal-close="projectModal" type="button">×</button>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="projectName">Project Name</label>
+                    <input id="projectName" type="text" placeholder="Project Name">
+                </div>
+                <div class="field">
+                    <label for="projectCategory">Category</label>
+                    <input id="projectCategory" type="text" placeholder="e.g. Robotics, AI, Hardware">
+                </div>
+                <div class="field">
+                    <label for="projectStatus">Status</label>
+                    <select id="projectStatus">
+                        <option value="Planned">Planned</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Live">Live</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="projectProgress">Progress</label>
+                    <input id="projectProgress" type="range" min="0" max="100" step="1" value="0">
+                    <div class="progress-label" id="projectProgressValue">0%</div>
+                </div>
+                <div class="field full-width">
+                    <label for="projectShortDescription">Short Description</label>
+                    <textarea id="projectShortDescription" placeholder="Short description..."></textarea>
+                </div>
+                <div class="field full-width">
+                    <label for="projectFullDescription">Full Description</label>
+                    <textarea id="projectFullDescription" placeholder="Full description..."></textarea>
+                </div>
+                <div class="field">
+                    <label for="projectGithubUrl">GitHub URL</label>
+                    <input id="projectGithubUrl" type="url" placeholder="https://github.com/...">
+                </div>
+                <div class="field">
+                    <label for="projectDemoUrl">Demo URL</label>
+                    <input id="projectDemoUrl" type="url" placeholder="https://...">
+                </div>
+                <div class="field">
+                    <label for="projectDisplayOrder">Display Order</label>
+                    <input id="projectDisplayOrder" type="number" placeholder="0" min="0">
+                </div>
+                <div class="field">
+                    <label for="projectFeatured">
+                        <input id="projectFeatured" type="checkbox" style="margin-right: 0.5rem;">
+                        Featured
+                    </label>
+                </div>
+                <div class="field">
+                    <label for="projectVisible">
+                        <input id="projectVisible" type="checkbox" checked style="margin-right: 0.5rem;">
+                        Visible
+                    </label>
+                </div>
+                <div class="field full-width">
+                    <label>Project Image</label>
+                    <div class="image-dropzone" id="projectImageDropzone">
+                        <div class="image-preview-wrapper">
+                            <div id="projectImagePreview">No image</div>
+                        </div>
+                        <input id="projectImageInput" type="file" accept="image/*" hidden data-url="">
+                    </div>
+                </div>
+            </div>
+            <div class="confirm-actions">
+                <button class="ghost-btn" data-modal-close="projectModal" type="button">Cancel</button>
+                <button class="primary-btn" id="saveProjectBtn" type="button">Save Project</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="galleryModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>New Gallery Image</h3>
+                <button class="modal-close" data-modal-close="galleryModal" type="button">×</button>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="galleryTitle">Title</label>
+                    <input id="galleryTitle" type="text" placeholder="Image title">
+                </div>
+                <div class="field">
+                    <label for="galleryAlbum">Album</label>
+                    <input id="galleryAlbum" type="text" placeholder="Album name">
+                </div>
+                <div class="field full-width">
+                    <label for="galleryDescription">Description</label>
+                    <textarea id="galleryDescription" placeholder="Short description..."></textarea>
+                </div>
+                <div class="field">
+                    <label for="galleryDisplayOrder">Display Order</label>
+                    <input id="galleryDisplayOrder" type="number" placeholder="0" min="0">
+                </div>
+                <div class="field">
+                    <label for="galleryFeatured">
+                        <input id="galleryFeatured" type="checkbox" style="margin-right: 0.5rem;">
+                        Featured
+                    </label>
+                </div>
+                <div class="field full-width">
+                    <label>Image</label>
+                    <div class="image-dropzone" id="galleryImageDropzone">
+                        <div class="image-preview-wrapper">
+                            <div id="galleryImagePreview">No image</div>
+                        </div>
+                        <input id="galleryImageInput" type="file" accept="image/*" hidden data-url="">
+                    </div>
+                </div>
+            </div>
+            <div class="confirm-actions">
+                <button class="ghost-btn" data-modal-close="galleryModal" type="button">Cancel</button>
+                <button class="primary-btn" id="saveGalleryBtn" type="button">Save Image</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="deleteModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Delete Member?</h3>
+                <button class="modal-close" data-modal-close="deleteModal" type="button">×</button>
+            </div>
+            <p>Delete <strong id="confirmMemberName">this member</strong> from the team roster?</p>
+            <p id="confirmMessage" class="metric-subtitle">This action cannot be undone.</p>
+            <div class="confirm-actions">
+                <button class="ghost-btn" data-modal-close="deleteModal" type="button">Cancel</button>
+                <button class="primary-btn" id="confirmDeleteBtn" type="button">Delete</button>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase.js"></script>
     <script src="../js/guard.js"></script>
-    <script src="../js/dashboard.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
-
+    <script src="../js/toast.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/admin-achievements-api.js"></script>
+    <script src="../js/admin-achievements-ui.js"></script>
+    <script src="../js/admin-events-api.js" type="module"></script>
+    <script src="../js/admin-events-ui.js" type="module"></script>
+    <script src="../js/admin-gallery-api.js" type="module"></script>
+    <script src="../js/admin-gallery-ui.js" type="module"></script>
+    <script src="../js/settings-api.js"></script>
+    <script src="../js/admin-settings-ui.js" type="module"></script>
+    <script type="module" src="../js/admin-cms-init.js"></script>
+    <script src="../js/members-api.js" type="module"></script>
+    <script src="../js/members-ui.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script src="../js/sortable.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
+    <script type="module" src="../js/members.js"></script>
 </body>
-
 </html>

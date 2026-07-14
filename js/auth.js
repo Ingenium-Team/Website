@@ -1,5 +1,4 @@
 async function login() {
-
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -13,6 +12,5 @@ async function login() {
         return;
     }
 
-  window.location.href = "dashboard.html";
-
+    window.location.href = "dashboard.html";
 }

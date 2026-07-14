@@ -4,22 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingenium Admin Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
+    <div class="particle" style="top: 10%; left: 12%;"></div>
+    <div class="particle" style="top: 78%; left: 80%; animation-delay: 2s;"></div>
+    <div class="particle" style="top: 30%; left: 68%; animation-delay: 4s;"></div>
+    <div class="particle" style="top: 60%; left: 26%; animation-delay: 6s;"></div>
 
-    <h2>Admin Login</h2>
+    <main class="login-shell">
+        <section class="login-card" aria-label="Admin login form">
+            <div class="brand">
+                <div class="brand-mark">I</div>
+                <div>
+                    <div class="brand-title">Ingenium</div>
+                    <div class="brand-subtitle">Admin Panel</div>
+                </div>
+            </div>
 
-    <input type="email" id="email" placeholder="Email">
-    <br><br>
+            <h2 class="login-heading">Secure Administrator Access</h2>
+            <p class="login-copy">Sign in to manage your team, projects, and operations from a premium control center.</p>
 
-    <input type="password" id="password" placeholder="Password">
-    <br><br>
+            <div class="field">
+                <input type="email" id="email" placeholder=" " autocomplete="email">
+                <label for="email">Email address</label>
+                <i class="field-icon fa-regular fa-envelope"></i>
+            </div>
 
-    <button onclick="login()">Login</button>
+            <div class="field">
+                <input type="password" id="password" placeholder=" " autocomplete="current-password">
+                <label for="password">Password</label>
+                <button class="password-toggle" type="button" id="togglePassword" aria-label="Show password">
+                    <i class="fa-regular fa-eye"></i>
+                </button>
+            </div>
+
+            <div class="helper-row">
+                <label class="remember" for="rememberMe">
+                    <input type="checkbox" id="rememberMe">
+                    <span>Remember me</span>
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <button class="login-btn" type="button" onclick="handleLogin()">Sign In</button>
+        </section>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase.js"></script>
+    <script src="../js/guard.js"></script>
     <script src="../js/auth.js"></script>
+    <script>
+        function handleLogin() {
+            const button = document.querySelector('.login-btn');
+            button.classList.add('is-loading');
+            button.textContent = 'Signing In';
+            setTimeout(() => {
+                login();
+            }, 180);
+        }
 
+        document.getElementById('togglePassword').addEventListener('click', () => {
+            const passwordInput = document.getElementById('password');
+            const icon = document.querySelector('.password-toggle i');
+            const isHidden = passwordInput.type === 'password';
+            passwordInput.type = isHidden ? 'text' : 'password';
+            icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+        });
+    </script>
 </body>
 </html>
