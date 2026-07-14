@@ -12,7 +12,11 @@ function initSortable() {
         onEnd: async () => {
             const memberIds = Array.from(grid.querySelectorAll(".member-card")).map((card) => card.dataset.id);
             try {
-                await window.membersApi.updateMemberOrder(memberIds);
+                const result = await window.membersApi.updateMemberOrder(memberIds);
+                if (!result || !result.success) {
+                    showToast("Unable to update member order.", "error");
+                    return;
+                }
                 await window.membersApp.refreshMembers();
                 showToast("Member order updated.", "success");
             } catch (error) {

@@ -314,8 +314,22 @@ async function confirmDeleteMember() {
 async function moveMemberOrder(memberId, direction) {
     const department = activeTrack === "Leadership" ? "Leadership" : activeTrack;
     try {
-        await window.membersApi.updateMemberOrder(normalizeMemberId(memberId), direction, department);
+        const result = await window.membersApi.updateMemberOrder(normalizeMemberId(memberId), direction, department);
+        if (!result || !result.success) {
+            showToast("Unable to update member order.", "error");
+            return;
+        }
+
         await window.membersApp.refreshMembers();
+
+        // log details required by debugging
+        console.log("Member order swap:", {
+            memberId: result.currentMemberId,
+            oldDisplayOrder: result.oldDisplayOrder,
+            newDisplayOrder: result.newDisplayOrder,
+            swappedMemberId: result.swappedMemberId
+        });
+
         showToast("Member order updated.", "success");
     } catch (error) {
         console.error(error);

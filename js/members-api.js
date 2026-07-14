@@ -17,7 +17,7 @@ async function saveMember(member, id = null) {
     if (id) {
         const { error } = await supabaseClient.from("team_members").update(member).eq("id", id);
         if (error) throw error;
-        return;
+        return { success: true };
     }
 
     const { error } = await supabaseClient.from("team_members").insert(member);
@@ -32,12 +32,26 @@ async function deleteMemberById(id) {
 async function updateMemberOrder(memberId, direction, department) {
     if (Array.isArray(memberId)) {
         const orderedIds = memberId;
-        const updates = orderedIds.map((id, index) =>
-            supabaseClient.from("team_members").update({ display_order: index }).eq("id", id)
-        );
-        const results = await Promise.all(updates);
-        const errors = results.map((result) => result.error).filter(Boolean);
-        if (errors.length) throw errors[0];
+        // Normalize to 1-based sequential ordering using a two-phase update to avoid duplicates
+        try {
+            // Phase 1: assign temporary negative values to reserve unique slots
+            for (let i = 0; i < orderedIds.length; i++) {
+                const id = orderedIds[i];
+                const tmp = -(i + 1);
+                const { error: e1 } = await supabaseClient.from("team_members").update({ display_order: tmp }).eq("id", id);
+                if (e1) throw e1;
+            }
+
+            // Phase 2: assign final 1-based values
+            for (let i = 0; i < orderedIds.length; i++) {
+                const id = orderedIds[i];
+                const finalVal = i + 1;
+                const { error: e2 } = await supabaseClient.from("team_members").update({ display_order: finalVal }).eq("id", id);
+                if (e2) throw e2;
+            }
+        } catch (err) {
+            throw err;
+        }
         return;
     }
 
@@ -53,16 +67,89 @@ async function updateMemberOrder(memberId, direction, department) {
 
     if (currentIndex < 0 || !members || members.length <= 1) return;
 
+    // If display_order has gaps or duplicates, normalize first
+    const orders = (members || []).map((m) => Number(m.display_order));
+    const needsNormalization = (() => {
+        if (!orders.length) return false;
+        const n = orders.length;
+        const sorted = orders.slice().sort((a, b) => a - b);
+        for (let i = 0; i < n; i++) {
+            if (sorted[i] !== i + 1) return true;
+        }
+        return false;
+    })();
+
+    if (needsNormalization) {
+        try {
+            for (let i = 0; i < members.length; i++) {
+                const id = members[i].id;
+                const tmp = -(i + 1);
+                const { error: e } = await supabaseClient.from("team_members").update({ display_order: tmp }).eq("id", id);
+                if (e) throw e;
+            }
+            for (let i = 0; i < members.length; i++) {
+                const id = members[i].id;
+                const finalVal = i + 1;
+                const { error: e } = await supabaseClient.from("team_members").update({ display_order: finalVal }).eq("id", id);
+                if (e) throw e;
+            }
+        } catch (err) {
+            throw err;
+        }
+
+        // refetch normalized members
+        const { data: normalizedMembers, error: refetchErr } = await supabaseClient
+            .from("team_members")
+            .select("id, display_order")
+            .eq("department", department)
+            .order("display_order", { ascending: true });
+        if (refetchErr) throw refetchErr;
+        members.length = 0;
+        if (normalizedMembers) normalizedMembers.forEach((m) => members.push(m));
+    }
+
     const targetIndex = direction === "up" ? Math.max(0, currentIndex - 1) : Math.min(members.length - 1, currentIndex + 1);
     const targetMember = members[targetIndex];
     const currentMember = members[currentIndex];
 
     if (!targetMember || !currentMember || targetMember.id === currentMember.id) return;
 
-    const [currentOrder, targetOrder] = [currentMember.display_order, targetMember.display_order];
+    const [currentOrder, targetOrder] = [Number(currentMember.display_order), Number(targetMember.display_order)];
 
-    await supabaseClient.from("team_members").update({ display_order: targetOrder }).eq("id", currentMember.id);
-    await supabaseClient.from("team_members").update({ display_order: currentOrder }).eq("id", targetMember.id);
+    // Perform a transaction-like swap using a temporary value to avoid duplicate display_order lingering
+    const tempVal = 0; // safe because we normalized to 1..n above
+    console.log("Reordering members:", {
+        currentMemberId: currentMember.id,
+        oldDisplayOrder: currentOrder,
+        swappedWithId: targetMember.id,
+        swappedWithOldDisplayOrder: targetOrder
+    });
+
+    const { error: e1 } = await supabaseClient.from("team_members").update({ display_order: tempVal }).eq("id", currentMember.id);
+    if (e1) throw e1;
+
+    const { error: e2 } = await supabaseClient.from("team_members").update({ display_order: currentOrder }).eq("id", targetMember.id);
+    if (e2) throw e2;
+
+    const { error: e3 } = await supabaseClient.from("team_members").update({ display_order: targetOrder }).eq("id", currentMember.id);
+    if (e3) throw e3;
+
+    console.log("Reordered members result:", {
+        currentMemberId: currentMember.id,
+        newDisplayOrder: targetOrder,
+        swappedMemberId: targetMember.id,
+        swappedMemberNewDisplayOrder: currentOrder
+    });
+
+    return {
+        success: true,
+        currentMemberId: currentMember.id,
+        oldDisplayOrder: currentOrder,
+        newDisplayOrder: targetOrder,
+        swappedMemberId: targetMember.id,
+        swappedMemberOldDisplayOrder: targetOrder,
+        swappedMemberNewDisplayOrder: currentOrder
+    };
 }
 
 async function uploadMemberImage(file) {
