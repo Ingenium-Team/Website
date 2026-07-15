@@ -1207,8 +1207,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
                 <span class="field-error" id="contactNameErr">Please enter your name.</span>
               </div>
               <div class="form-group">
-                <label for="contactEmail">Email <span class="req" aria-label="required">*</span></label>
-                <input type="email" id="contactEmail" name="contactEmail" placeholder="your@email.com" autocomplete="email" required/>
+                <label for="contactEmailInput">Email <span class="req" aria-label="required">*</span></label>
+                <input type="email" id="contactEmailInput" name="contactEmail" placeholder="your@email.com" autocomplete="email" required/>
                 <span class="field-error" id="contactEmailErr">Please enter a valid email.</span>
               </div>
             </div>
@@ -1462,8 +1462,9 @@ function setFieldState(input, errEl, valid, msg) {
   return valid;
 }
 
-function validateEmail(v) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+function validateEmail(email) {
+  const normalizedEmail = (email || "").trim();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail);
 }
 
 function showAlert(elId, type, msg) {
@@ -1657,47 +1658,82 @@ document.querySelectorAll('input[name="technicalTrack"], input[name="nonTechnica
 function validateContactForm() {
   let ok = true;
   const cn = document.getElementById('contactName');
-  const ce = document.getElementById('contactEmail');
+  const ce = document.getElementById('contactEmailInput');
   const sb = document.getElementById('subject');
   const ms = document.getElementById('message');
 
-  if (!setFieldState(cn, document.getElementById('contactNameErr'), cn.value.trim().length >= 2)) ok = false;
-  if (!setFieldState(ce, document.getElementById('contactEmailErr'), validateEmail(ce.value))) ok = false;
-  if (!setFieldState(sb, document.getElementById('subjectErr'), sb.value.trim().length >= 3)) ok = false;
-  if (!setFieldState(ms, document.getElementById('messageErr'), ms.value.trim().length >= 10)) ok = false;
+  const nameValue = cn ? cn.value : '';
+  const emailValue = ce ? ce.value : '';
+  const subjectValue = sb ? sb.value : '';
+  const messageValue = ms ? ms.value : '';
+
+  console.log('Contact form debug - name:', nameValue);
+  console.log('Contact form debug - email:', emailValue);
+  console.log('Contact form debug - subject:', subjectValue);
+  console.log('Contact form debug - message:', messageValue);
+
+  const requiredFields = [
+    { input: cn, errId: 'contactNameErr', label: 'contactName', validate: value => value.trim().length >= 2, msg: 'Please enter your name.' },
+    { input: ce, errId: 'contactEmailErr', label: 'contactEmail', validate: value => validateEmail(value), msg: 'Please enter a valid email.' },
+    { input: sb, errId: 'subjectErr', label: 'subject', validate: value => value.trim().length >= 3, msg: 'Please enter a subject.' },
+    { input: ms, errId: 'messageErr', label: 'message', validate: value => value.trim().length >= 10, msg: 'Please enter your message.' }
+  ];
+
+  requiredFields.forEach(({ input, errId, label, validate, msg }) => {
+    if (!input) {
+      console.error(`Contact form validation: missing input "${label}" with expected id "${label}".`);
+      ok = false;
+      return;
+    }
+
+    const value = input.value || '';
+    const valid = validate(value);
+    if (!setFieldState(input, document.getElementById(errId), valid, msg)) ok = false;
+  });
+
   return ok;
 }
 
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  hideAlert('contactAlert');
+const contactForm = document.getElementById('contactForm');
+if (!contactForm) {
+  console.error('Contact form submission: missing form element with id "contactForm".');
+} else {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    hideAlert('contactAlert');
 
-  if (!validateContactForm()) {
-    showAlert('contactAlert', 'error', 'Please fill in all required fields.');
-    return;
-  }
+    if (!validateContactForm()) {
+      showAlert('contactAlert', 'error', 'Please fill in all required fields.');
+      return;
+    }
 
-  setLoading('contactSubmitBtn', 'contactSpinner', 'contactBtnText', true);
+    setLoading('contactSubmitBtn', 'contactSpinner', 'contactBtnText', true);
 
-  const payload = {
-    formType: 'contact',
-    name:     document.getElementById('contactName').value.trim(),
-    email:    document.getElementById('contactEmail').value.trim(),
-    subject:  document.getElementById('subject').value.trim(),
-    message:  document.getElementById('message').value.trim()
-  };
+    const contactNameInput = document.getElementById('contactName');
+    const contactEmailInput = document.getElementById('contactEmailInput');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
 
-  try {
-    await submitApplication(payload);
-    document.getElementById('contactForm').reset();
-    showAlert('contactAlert', 'success-alert', '✓ Message sent! We\'ll get back to you within 2 business days.');
-  } catch (err) {
-    console.error('Contact form error:', err);
-    showAlert('contactAlert', 'error', 'Failed to send. Please email us at ingeniummteam@gmail.com.');
-  } finally {
-    setLoading('contactSubmitBtn', 'contactSpinner', 'contactBtnText', false);
-  }
-});
+    const payload = {
+      formType: 'contact',
+      name:     (contactNameInput ? contactNameInput.value : '').trim(),
+      email:    (contactEmailInput ? contactEmailInput.value : '').trim(),
+      subject:  (subjectInput ? subjectInput.value : '').trim(),
+      message:  (messageInput ? messageInput.value : '').trim()
+    };
+
+    try {
+      await submitApplication(payload);
+      contactForm.reset();
+      showAlert('contactAlert', 'success-alert', '✓ Message sent! We\'ll get back to you within 2 business days.');
+    } catch (err) {
+      console.error('Contact form error:', err);
+      showAlert('contactAlert', 'error', 'Failed to send. Please email us at ingeniummteam@gmail.com.');
+    } finally {
+      setLoading('contactSubmitBtn', 'contactSpinner', 'contactBtnText', false);
+    }
+  });
+}
 
 /* ─────────────────────────────────────────────
    LIVE FIELD VALIDATION (clear errors on input)
