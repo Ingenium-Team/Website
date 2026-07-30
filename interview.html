@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Booking | Ingenium</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/interview.css">
+</head>
+<body>
+    <main class="interview-shell">
+        <section class="interview-hero panel-card">
+            <p class="eyebrow">Ingenium</p>
+            <h1>Interview Booking</h1>
+            <p class="hero-copy">Choose your interview time</p>
+        </section>
+
+        <section class="interview-panel panel-card">
+            <div class="form-grid" style="margin-bottom: 1rem;">
+                <div class="field">
+                    <label for="committeeSelect">Committee</label>
+                    <select id="committeeSelect" required>
+                        <option value="">Select committee</option>
+                        <option value="mechanical">Mechanical</option>
+                        <option value="software">Software</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="robotics">Robotics</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="publicApplicantName">Full Name</label>
+                    <input id="publicApplicantName" type="text" placeholder="Your full name" required>
+                </div>
+                <div class="field">
+                    <label for="publicApplicantEmail">Email</label>
+                    <input id="publicApplicantEmail" type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="field">
+                    <label for="publicApplicantPhone">Phone</label>
+                    <input id="publicApplicantPhone" type="tel" placeholder="Phone number" required>
+                </div>
+                <div class="field full-width">
+                    <label for="publicApplicantNotes">Notes (optional)</label>
+                    <textarea id="publicApplicantNotes" rows="3" placeholder="Tell us anything relevant for the interview..."></textarea>
+                </div>
+                <div class="confirm-actions" style="justify-content: flex-start; margin-top: 0;">
+                    <button class="primary-btn" id="loadSlotsBtn" type="button">Show Available Slots</button>
+                </div>
+            </div>
+            <div id="slotLoading" class="status-copy hidden">Loading interview slots...</div>
+            <div id="slotsContainer" class="slot-groups"></div>
+            <div id="slotEmptyState" class="empty-state hidden">No interview slots are currently available for this committee at the moment.</div>
+        </section>
+
+        <section id="bookingConfirmation" class="confirmation-card hidden panel-card">
+            <p class="eyebrow">Interview Booked Successfully</p>
+            <div class="confirmation-grid">
+                <div>
+                    <span class="confirmation-label">Name:</span>
+                    <strong id="confirmationName"></strong>
+                </div>
+                <div>
+                    <span class="confirmation-label">Date:</span>
+                    <strong id="confirmationDate"></strong>
+                </div>
+                <div>
+                    <span class="confirmation-label">Time:</span>
+                    <strong id="confirmationTime"></strong>
+                </div>
+                <div>
+                    <span class="confirmation-label">Email:</span>
+                    <strong id="confirmationEmail"></strong>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="interviewBookingModal">
+        <div class="modal-card interview-booking-modal">
+            <div class="modal-header">
+                <h3>Book Interview</h3>
+                <button class="modal-close" data-modal-close="interviewBookingModal" type="button">×</button>
+            </div>
+
+            <div class="selected-slot-summary" id="selectedSlotSummary"></div>
+
+            <form id="bookingForm" class="form-grid">
+                <div class="field full-width">
+                    <label for="applicantName">Full Name</label>
+                    <input id="applicantName" type="text" placeholder="Your full name" required>
+                </div>
+                <div class="field">
+                    <label for="applicantEmail">Email</label>
+                    <input id="applicantEmail" type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="field">
+                    <label for="applicantPhone">Phone</label>
+                    <input id="applicantPhone" type="tel" placeholder="Phone number" required>
+                </div>
+                <div class="field full-width">
+                    <label for="applicantNotes">Notes (optional)</label>
+                    <textarea id="applicantNotes" rows="4" placeholder="Tell us anything relevant for the interview..."></textarea>
+                </div>
+                <div class="confirm-actions">
+                    <button class="ghost-btn" data-modal-close="interviewBookingModal" type="button">Cancel</button>
+                    <button class="primary-btn" id="confirmBookingBtn" type="submit">Confirm Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/interview.js"></script>
+</body>
+</html>

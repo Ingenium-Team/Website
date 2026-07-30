@@ -2,11 +2,22 @@ import { initProjectsUI, openProjectModal, closeProjectModal, saveProject } from
 import { initEventsUI, openEventModal, closeEventModal, saveEvent } from "./admin-events-ui.js";
 import { initGalleryUI, openGalleryModal, closeGalleryModal, saveGalleryItem } from "./admin-gallery-ui.js";
 import { initSettingsUI, saveSettingsUI, resetSettingsUI } from "./admin-settings-ui.js";
+import { initTasksUI } from "./tasks-ui.js";
+import { initSubmissionsUI } from "./submissions-ui.js";
+import { initInterviewBookingsUI, openInterviewSlotModal, saveInterviewSlot } from "./admin-interviews-ui.js";
 
 // Admin Dashboard CMS Initialization
 // Initialize achievements and events modules when views are opened
 
 function initCMSHandlers() {
+  if (document.body && document.body.dataset.cmsHandlersInitialized === 'true') {
+    return;
+  }
+
+  if (document.body) {
+    document.body.dataset.cmsHandlersInitialized = 'true';
+  }
+
   // Initialize achievements when the view is activated
   const achievementsView = document.getElementById("achievementsView");
   if (achievementsView) {
@@ -61,6 +72,49 @@ function initCMSHandlers() {
         setTimeout(() => {
           if (typeof initGalleryUI === 'function') {
             initGalleryUI();
+          }
+        }, 100);
+      });
+    }
+  }
+
+  // Initialize tasks and submissions when their views are activated
+  const tasksView = document.getElementById("tasksView");
+  if (tasksView) {
+    const navLink = document.querySelector('[data-view="tasksView"]');
+    if (navLink) {
+      navLink.addEventListener("click", () => {
+        setTimeout(() => {
+          if (typeof initTasksUI === 'function') {
+            initTasksUI();
+          }
+        }, 100);
+      });
+    }
+  }
+
+  const submissionsView = document.getElementById("submissionsView");
+  if (submissionsView) {
+    const navLink = document.querySelector('[data-view="submissionsView"]');
+    if (navLink) {
+      navLink.addEventListener("click", () => {
+        setTimeout(() => {
+          if (typeof initSubmissionsUI === 'function') {
+            initSubmissionsUI();
+          }
+        }, 100);
+      });
+    }
+  }
+
+  const interviewsView = document.getElementById("interviewsView");
+  if (interviewsView) {
+    const navLink = document.querySelector('[data-view="interviewsView"]');
+    if (navLink) {
+      navLink.addEventListener("click", () => {
+        setTimeout(() => {
+          if (typeof initInterviewBookingsUI === 'function') {
+            initInterviewBookingsUI();
           }
         }, 100);
       });
@@ -214,6 +268,9 @@ function initCMSHandlers() {
     });
   }
 
+  // Interview slot modal wiring is handled inside admin-interviews-ui.js.
+  // Avoid binding the same Save/Create actions twice when the dashboard initializes.
+
   // Setup image dropzones
   if (typeof setupImageDropzone === 'function') {
     if (typeof uploadAchievementImage === 'function') {
@@ -265,6 +322,18 @@ function initCMSHandlers() {
     });
   });
 
+  document.querySelectorAll('[data-modal-close="interviewSlotModal"]').forEach(btn => {
+    btn.addEventListener("click", () => {
+      closeModal("interviewSlotModal");
+    });
+  });
+
+  document.querySelectorAll('[data-modal-close="interviewBookingDetailsModal"]').forEach(btn => {
+    btn.addEventListener("click", () => {
+      closeModal("interviewBookingDetailsModal");
+    });
+  });
+
   // Load achievements on first view
   const achievementsView2 = document.getElementById("achievementsView");
   if (achievementsView2 && !achievementsView2.dataset.initialized) {
@@ -305,6 +374,30 @@ function initCMSHandlers() {
     if (typeof initSettingsUI === 'function') {
       initSettingsUI();
       settingsView2.dataset.initialized = "true";
+    }
+  }
+
+  const tasksView2 = document.getElementById("tasksView");
+  if (tasksView2 && !tasksView2.dataset.initialized) {
+    if (typeof initTasksUI === 'function') {
+      initTasksUI();
+      tasksView2.dataset.initialized = "true";
+    }
+  }
+
+  const submissionsView2 = document.getElementById("submissionsView");
+  if (submissionsView2 && !submissionsView2.dataset.initialized) {
+    if (typeof initSubmissionsUI === 'function') {
+      initSubmissionsUI();
+      submissionsView2.dataset.initialized = "true";
+    }
+  }
+
+  const interviewsView2 = document.getElementById("interviewsView");
+  if (interviewsView2 && !interviewsView2.dataset.initialized) {
+    if (typeof initInterviewBookingsUI === 'function') {
+      initInterviewBookingsUI();
+      interviewsView2.dataset.initialized = "true";
     }
   }
 }

@@ -603,10 +603,52 @@
   transition: all 0.2s ease;
 }
 
+.interview-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.9rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(196, 117, 58, 0.12);
+}
+
+.data-table th {
+  color: var(--copper);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.data-table td {
+  color: var(--white);
+  font-size: 0.92rem;
+}
+
+.booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .achievements-grid,
   .events-grid,
-  .gallery-grid {
+  .gallery-grid,
+  .interview-slot-grid {
     grid-template-columns: 1fr;
   }
 

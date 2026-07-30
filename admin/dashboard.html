@@ -6,6 +6,7 @@
     <title>Ingenium Dashboard</title>
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/admin-cms.css">
+    <link rel="stylesheet" href="../css/tasks.css">
 </head>
 <body>
     <div class="app-shell">
@@ -22,6 +23,9 @@
                 <button class="nav-link active" data-view="dashboardView" type="button"><span class="nav-icon">🏠</span><span>Dashboard</span></button>
                 <button class="nav-link" data-view="membersView" type="button"><span class="nav-icon">👥</span><span>Team Members</span></button>
                 <button class="nav-link" data-view="projectsView" type="button"><span class="nav-icon">📁</span><span>Projects</span></button>
+                <button class="nav-link" data-view="tasksView" type="button"><span class="nav-icon">✅</span><span>Tasks</span></button>
+                <button class="nav-link" data-view="submissionsView" type="button"><span class="nav-icon">📝</span><span>Submissions</span></button>
+                <button class="nav-link" data-view="interviewsView" type="button"><span class="nav-icon">🎙️</span><span>Interview Bookings</span></button>
                 <button class="nav-link" data-view="achievementsView" type="button"><span class="nav-icon">🏆</span><span>Achievements</span></button>
                 <button class="nav-link" data-view="eventsView" type="button"><span class="nav-icon">📅</span><span>Events</span></button>
                 <button class="nav-link" data-view="galleryView" type="button"><span class="nav-icon">🖼</span><span>Gallery</span></button>
@@ -104,6 +108,62 @@
                         <button class="primary-btn" id="addProjectBtn" type="button">+ Add Project</button>
                     </div>
                     <div id="projectsGrid" class="projects-grid"></div>
+                </div>
+
+                <div class="view-panel" id="tasksView"></div>
+
+                <div class="view-panel" id="submissionsView"></div>
+
+                <div class="view-panel" id="interviewsView">
+                    <div class="toolbar">
+                        <label class="toolbar-search" for="interviewSearch">
+                            <span>🔎</span>
+                            <input id="interviewSearch" type="search" placeholder="Search by applicant name or email">
+                        </label>
+                        <input class="toolbar-select" id="interviewDateFilter" type="date">
+                        <select class="toolbar-select" id="interviewStatusFilter">
+                            <option value="">Filter by Status</option>
+                            <option value="booked">Booked</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="no_show">No Show</option>
+                        </select>
+                        <select class="toolbar-select" id="interviewSort">
+                            <option value="newest">Newest</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="upcoming">Upcoming Interviews</option>
+                        </select>
+                        <button class="primary-btn" id="addInterviewSlotBtn" type="button">+ Create Slot</button>
+                    </div>
+
+                    <div class="stats-grid" id="interviewStatsGrid"></div>
+
+                    <div class="panel-card" style="padding: 1rem; margin-top: 1.25rem;">
+                        <div class="section-title" style="margin: 0 0 1rem; font-size: 1.15rem;">Interview Slots</div>
+                        <div id="interviewSlotsGrid" class="interview-slot-grid"></div>
+                    </div>
+
+                    <div class="panel-card" style="padding: 1rem; margin-top: 1.25rem;">
+                        <div class="section-title" style="margin: 0 0 1rem; font-size: 1.15rem;">Bookings</div>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Applicant</th>
+                                        <th>Committee</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Booked At</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="interviewBookingsTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="view-panel" id="achievementsView">
@@ -458,6 +518,56 @@
         </div>
     </div>
 
+    <div class="modal" id="interviewSlotModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="interviewSlotModalTitle">Create Interview Slot</h3>
+                <button class="modal-close" data-modal-close="interviewSlotModal" type="button">×</button>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="interviewSlotCommittee">Committee</label>
+                    <select id="interviewSlotCommittee" required>
+                        <option value="">Select committee</option>
+                        <option value="mechanical">Mechanical</option>
+                        <option value="software">Software</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="robotics">Robotics</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="interviewSlotDate">Date</label>
+                    <input id="interviewSlotDate" type="date">
+                </div>
+                <div class="field">
+                    <label for="interviewSlotStartTime">Start Time</label>
+                    <input id="interviewSlotStartTime" type="time">
+                </div>
+                <div class="field">
+                    <label for="interviewSlotEndTime">End Time</label>
+                    <input id="interviewSlotEndTime" type="time">
+                </div>
+            </div>
+            <div class="confirm-actions">
+                <button class="ghost-btn" data-modal-close="interviewSlotModal" type="button">Cancel</button>
+                <button class="primary-btn" id="saveInterviewSlotBtn" type="button">Save Slot</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="interviewBookingDetailsModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Booking Details</h3>
+                <button class="modal-close" data-modal-close="interviewBookingDetailsModal" type="button">×</button>
+            </div>
+            <div class="form-grid" id="interviewBookingDetailsContent"></div>
+            <div class="confirm-actions">
+                <button class="ghost-btn" data-modal-close="interviewBookingDetailsModal" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal" id="deleteModal">
         <div class="modal-card">
             <div class="modal-header">
@@ -486,6 +596,8 @@
     <script src="../js/admin-gallery-ui.js" type="module"></script>
     <script src="../js/settings-api.js"></script>
     <script src="../js/admin-settings-ui.js" type="module"></script>
+    <script type="module" src="../js/admin-interviews-api.js"></script>
+    <script type="module" src="../js/admin-interviews-ui.js"></script>
     <script type="module" src="../js/admin-cms-init.js"></script>
     <script src="../js/members-api.js" type="module"></script>
     <script src="../js/members-ui.js" type="module"></script>
