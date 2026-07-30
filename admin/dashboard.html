@@ -153,6 +153,7 @@
                                         <th>Committee</th>
                                         <th>Date</th>
                                         <th>Time</th>
+                                        <th>Type</th>
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Status</th>
@@ -546,6 +547,13 @@
                 <div class="field">
                     <label for="interviewSlotEndTime">End Time</label>
                     <input id="interviewSlotEndTime" type="time">
+                </div>
+                <div class="field">
+                    <label for="interviewSlotType">Interview Type</label>
+                    <select id="interviewSlotType" required>
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                    </select>
                 </div>
             </div>
             <div class="confirm-actions">

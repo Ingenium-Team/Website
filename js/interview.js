@@ -44,6 +44,11 @@ function formatCommitteeLabel(committee) {
     return committee.charAt(0).toUpperCase() + committee.slice(1);
 }
 
+function formatInterviewTypeLabel(type) {
+    if (!type) return "Unassigned";
+    return type.charAt(0).toUpperCase() + type.slice(1);
+}
+
 async function loadAvailableSlots() {
     if (!window.supabaseClient) {
         showToast("Supabase client is unavailable.", "error");
@@ -65,7 +70,7 @@ async function loadAvailableSlots() {
     try {
         const { data, error } = await window.supabaseClient
             .from("interview_slots")
-            .select("id, interview_date, start_time, end_time, status, committee")
+            .select("id, interview_date, start_time, end_time, status, committee, interview_type")
             .eq("status", "available")
             .eq("committee", selectedCommittee)
             .order("interview_date", { ascending: true })
@@ -113,7 +118,7 @@ function renderSlots() {
                         <div class="slot-card">
                             <div class="slot-meta">
                                 <span class="slot-time">${formatSlotRange(slot)}</span>
-                                <span class="slot-status">Available</span>
+                                <span class="slot-status">${formatInterviewTypeLabel(slot.interview_type)} • Available</span>
                             </div>
                             <button class="slot-select" type="button" data-slot-id="${slot.id}">Choose</button>
                         </div>
@@ -150,7 +155,7 @@ function openBookingModal(slotId) {
     if (publicPhone) document.getElementById("applicantPhone").value = publicPhone;
     if (publicNotes) document.getElementById("applicantNotes").value = publicNotes;
 
-    const summary = `${formatCommitteeLabel(interviewState.selectedSlot.committee)} • ${formatDateLabel(interviewState.selectedSlot.interview_date)} • ${formatSlotRange(interviewState.selectedSlot)}`;
+    const summary = `${formatCommitteeLabel(interviewState.selectedSlot.committee)} • ${formatInterviewTypeLabel(interviewState.selectedSlot.interview_type)} • ${formatDateLabel(interviewState.selectedSlot.interview_date)} • ${formatSlotRange(interviewState.selectedSlot)}`;
     interviewState.selectedSlotSummary.innerHTML = `<strong>${summary}</strong>`;
     window.openModal("interviewBookingModal");
 }
@@ -238,9 +243,18 @@ async function submitBooking(event) {
 
 function renderConfirmation(bookingDetails) {
     document.getElementById("confirmationName").textContent = bookingDetails.name;
+    document.getElementById("confirmationType").textContent = formatInterviewTypeLabel(interviewState.selectedSlot.interview_type);
     document.getElementById("confirmationDate").textContent = formatDateLabel(interviewState.selectedSlot.interview_date);
     document.getElementById("confirmationTime").textContent = formatSlotRange(interviewState.selectedSlot);
     document.getElementById("confirmationEmail").textContent = bookingDetails.email;
+
+    const confirmationMessage = document.getElementById("confirmationMessage");
+    if (interviewState.selectedSlot.interview_type === "online") {
+        confirmationMessage.textContent = "Your interview will be conducted online. We will contact you via WhatsApp with the interview details.";
+    } else {
+        confirmationMessage.textContent = "Your interview will be conducted offline.";
+    }
+
     interviewState.bookingConfirmation.classList.remove("hidden");
 }
 

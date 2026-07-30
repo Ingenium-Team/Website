@@ -53,6 +53,11 @@ function formatCommitteeLabel(committee) {
   return committee.charAt(0).toUpperCase() + committee.slice(1);
 }
 
+function formatInterviewTypeLabel(type) {
+  if (!type) return "Unassigned";
+  return type.charAt(0).toUpperCase() + type.slice(1);
+}
+
 function safeStatusLabel(status) {
   return (status || "").replace(/_/g, " ").toUpperCase();
 }
@@ -131,6 +136,7 @@ function renderInterviewSlots() {
         <div class="event-meta">
           <div>🏷️ Committee: ${formatCommitteeLabel(slot.committee)}</div>
           <div>⏰ ${formatAdminTime(slot.start_time)} — ${formatAdminTime(slot.end_time)}</div>
+          <div>🧾 Type: ${formatInterviewTypeLabel(slot.interview_type)}</div>
           <div>🧾 Status: ${slot.status}</div>
         </div>
         <div class="event-actions">
@@ -175,6 +181,7 @@ function renderInterviewBookings() {
         <td>${slot ? formatCommitteeLabel(slot.committee) : "—"}</td>
         <td>${slot ? formatAdminDate(slot.interview_date) : "—"}</td>
         <td>${slot ? `${formatAdminTime(slot.start_time)} — ${formatAdminTime(slot.end_time)}` : "—"}</td>
+        <td>${slot ? formatInterviewTypeLabel(slot.interview_type) : "—"}</td>
         <td>${booking.applicant_email || "—"}</td>
         <td>${booking.applicant_phone || "—"}</td>
         <td>${safeStatusLabel(booking.status)}</td>
@@ -302,6 +309,7 @@ function openInterviewSlotModal(slotId = null) {
 
   const dateInput = document.getElementById("interviewSlotDate");
   const committeeInput = document.getElementById("interviewSlotCommittee");
+  const typeInput = document.getElementById("interviewSlotType");
   const startInput = document.getElementById("interviewSlotStartTime");
   const endInput = document.getElementById("interviewSlotEndTime");
   const title = document.getElementById("interviewSlotModalTitle");
@@ -320,6 +328,7 @@ function openInterviewSlotModal(slotId = null) {
 
   if (dateInput) dateInput.value = selectedInterviewSlot?.interview_date || new Date().toISOString().split("T")[0];
   if (committeeInput) committeeInput.value = selectedInterviewSlot?.committee || "";
+  if (typeInput) typeInput.value = selectedInterviewSlot?.interview_type || "online";
   if (startInput) startInput.value = selectedInterviewSlot?.start_time || "09:00";
   if (endInput) endInput.value = selectedInterviewSlot?.end_time || "09:30";
 
@@ -341,10 +350,11 @@ async function saveInterviewSlot() {
 
   const date = document.getElementById("interviewSlotDate")?.value;
   const committee = document.getElementById("interviewSlotCommittee")?.value;
+  const interviewType = document.getElementById("interviewSlotType")?.value;
   const startTime = document.getElementById("interviewSlotStartTime")?.value;
   const endTime = document.getElementById("interviewSlotEndTime")?.value;
 
-  if (!date || !committee || !startTime || !endTime) {
+  if (!date || !committee || !startTime || !endTime || !interviewType) {
     interviewSaveInProgress = false;
     if (saveSlotBtn) {
       saveSlotBtn.disabled = false;
@@ -353,7 +363,6 @@ async function saveInterviewSlot() {
     showToast("Committee, date, start time, and end time are required.", "error");
     return;
   }
-
   if (startTime >= endTime) {
     showToast("End time must be after start time.", "error");
     return;
@@ -374,6 +383,7 @@ async function saveInterviewSlot() {
     const payload = {
       interview_date: date,
       committee,
+      interview_type: interviewType,
       start_time: startTime,
       end_time: endTime,
       status: "available"
@@ -497,6 +507,10 @@ function showInterviewBookingDetails(bookingId) {
     <div class="field">
       <label>Committee</label>
       <div>${slot ? formatCommitteeLabel(slot.committee) : "—"}</div>
+    </div>
+    <div class="field">
+      <label>Type</label>
+      <div>${slot ? formatInterviewTypeLabel(slot.interview_type) : "—"}</div>
     </div>
     <div class="field">
       <label>Date</label>
