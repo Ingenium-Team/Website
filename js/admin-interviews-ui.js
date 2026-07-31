@@ -121,12 +121,21 @@ function renderInterviewSlots() {
   const container = document.getElementById("interviewSlotsGrid");
   if (!container) return;
 
+  const filteredSlots = interviewFilters.committee
+    ? interviewSlots.filter((slot) => slot.committee === interviewFilters.committee)
+    : interviewSlots;
+
   if (!interviewSlots.length) {
     container.innerHTML = `<div class="empty-state">No interview slots created yet.</div>`;
     return;
   }
 
-  container.innerHTML = interviewSlots
+  if (!filteredSlots.length) {
+    container.innerHTML = `<div class="empty-state">No interview slots found for this committee.</div>`;
+    return;
+  }
+
+  container.innerHTML = filteredSlots
     .map((slot) => `
       <div class="panel-card" style="padding: 1rem;">
         <div class="event-header">
@@ -284,6 +293,7 @@ function attachInterviewHandlers() {
   if (committeeInput) {
     committeeInput.addEventListener("change", (event) => {
       interviewFilters.committee = event.target.value;
+      renderInterviewSlots();
       renderInterviewBookings();
     });
   }

@@ -121,6 +121,14 @@
                             <input id="interviewSearch" type="search" placeholder="Search by applicant name or email">
                         </label>
                         <input class="toolbar-select" id="interviewDateFilter" type="date">
+                        <label for="interviewCommitteeFilter" style="color: var(--silver); align-self: center; font-size: 0.9rem;">Committee</label>
+                        <select class="toolbar-select" id="interviewCommitteeFilter">
+                            <option value="">All Committees</option>
+                            <option value="mechanical">Mechanical</option>
+                            <option value="software">Software</option>
+                            <option value="hardware">Hardware</option>
+                            <option value="robotics">Robotics</option>
+                        </select>
                         <select class="toolbar-select" id="interviewStatusFilter">
                             <option value="">Filter by Status</option>
                             <option value="booked">Booked</option>
